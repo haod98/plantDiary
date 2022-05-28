@@ -22,6 +22,8 @@ return new class extends Migration
             $table->integer('sun')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
+            $table->unsignedBigInteger('room_id')->nullable();
+            $table->foreign('room_id')->references('id')->on('rooms');
             $table->timestamps();
         });
     }

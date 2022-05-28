@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PlantsController;
+use App\Http\Controllers\RoomsController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -26,6 +27,7 @@ Route::get('/', function () {
 });
 
 Route::resource('plants', PlantsController::class);
+Route::resource('rooms', RoomsController::class);
 
 Route::middleware([
     'auth:sanctum',
