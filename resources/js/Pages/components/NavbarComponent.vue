@@ -4,6 +4,7 @@ import PrimaryButton from "./buttons/PrimaryButton.vue";
 import SecondaryButton from "./buttons/SecondaryButton.vue";
 import BurgerMenu from "./buttons/BurgerMenu.vue";
 import logo from "../../../assets/logo.svg";
+import { Link } from "@inertiajs/inertia-vue3";
 defineComponent({
     components: {
         PrimaryButton,
@@ -52,7 +53,7 @@ defineComponent({
             <ul>
                 <li>
                     <router-link
-                        class="hover:decoration-plantDiary-100 text-lg font-light text-white hover:font-normal hover:underline"
+                        class="text-lg font-light text-white hover:font-normal hover:underline hover:decoration-plantDiary-100"
                         :to="{ name: 'home' }"
                         >Home</router-link
                     >
@@ -60,7 +61,7 @@ defineComponent({
                 <li v-for="navItem in navItems" :key="navItem.id">
                     <a
                         href="#"
-                        class="hover:decoration-plantDiary-100 text-lg font-light text-white hover:font-normal hover:underline"
+                        class="text-lg font-light text-white hover:font-normal hover:underline hover:decoration-plantDiary-100"
                         >{{ navItem.item }}</a
                     >
                 </li>
@@ -68,7 +69,7 @@ defineComponent({
             <div class="flex flex-col items-start justify-start gap-3">
                 <router-link
                     :to="{ name: 'signUp' }"
-                    class="text-plantDiary-50 font-bold"
+                    class="font-bold text-plantDiary-50"
                 >
                     Sign Up
                 </router-link>
@@ -86,16 +87,18 @@ defineComponent({
             <li v-for="navItem in navItems" :key="navItem.id">
                 <a
                     href="#"
-                    class="hover:decoration-plantDiary-100 text-lg font-light hover:font-normal hover:underline"
+                    class="text-lg font-light hover:font-normal hover:underline hover:decoration-plantDiary-100"
                     >{{ navItem.item }}</a
                 >
             </li>
             <li class="flex gap-2">
-                <router-link :to="{ name: 'signUp' }">
+                <Link :href="route('register')">
                     <PrimaryButton buttonText="Sign up" />
-                </router-link>
+                </Link>
                 <div>
-                    <SecondaryButton buttonText="Login" />
+                    <Link :href="route('login')">
+                        <SecondaryButton buttonText="Login" />
+                    </Link>
                 </div>
             </li>
         </ul>
