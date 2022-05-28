@@ -1,12 +1,12 @@
 <script setup>
-import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
-import JetAuthenticationCard from '@/Jetstream/AuthenticationCard.vue';
-import JetAuthenticationCardLogo from '@/Jetstream/AuthenticationCardLogo.vue';
-import JetButton from '@/Jetstream/Button.vue';
-import JetInput from '@/Jetstream/Input.vue';
-import JetCheckbox from '@/Jetstream/Checkbox.vue';
-import JetLabel from '@/Jetstream/Label.vue';
-import JetValidationErrors from '@/Jetstream/ValidationErrors.vue';
+import { Head, Link, useForm } from "@inertiajs/inertia-vue3";
+import JetAuthenticationCard from "@/Jetstream/AuthenticationCard.vue";
+import JetAuthenticationCardLogo from "@/Jetstream/AuthenticationCardLogo.vue";
+import JetButton from "@/Jetstream/Button.vue";
+import JetInput from "@/Jetstream/Input.vue";
+import JetCheckbox from "@/Jetstream/Checkbox.vue";
+import JetLabel from "@/Jetstream/Label.vue";
+import JetValidationErrors from "@/Jetstream/ValidationErrors.vue";
 
 defineProps({
     canResetPassword: Boolean,
@@ -14,17 +14,17 @@ defineProps({
 });
 
 const form = useForm({
-    email: '',
-    password: '',
+    email: "",
+    password: "",
     remember: false,
 });
 
 const submit = () => {
-    form.transform(data => ({
+    form.transform((data) => ({
         ...data,
-        remember: form.remember ? 'on' : '',
-    })).post(route('login'), {
-        onFinish: () => form.reset('password'),
+        remember: form.remember ? "on" : "",
+    })).post(route("login"), {
+        onFinish: () => form.reset("password"),
     });
 };
 </script>
@@ -39,7 +39,7 @@ const submit = () => {
 
         <JetValidationErrors class="mb-4" />
 
-        <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
+        <div v-if="status" class="mb-4 text-sm font-medium text-green-600">
             {{ status }}
         </div>
 
@@ -68,19 +68,29 @@ const submit = () => {
                 />
             </div>
 
-            <div class="block mt-4">
+            <div class="mt-4 block">
                 <label class="flex items-center">
-                    <JetCheckbox v-model:checked="form.remember" name="remember" />
+                    <JetCheckbox
+                        v-model:checked="form.remember"
+                        name="remember"
+                    />
                     <span class="ml-2 text-sm text-gray-600">Remember me</span>
                 </label>
             </div>
 
-            <div class="flex items-center justify-end mt-4">
-                <Link v-if="canResetPassword" :href="route('password.request')" class="underline text-sm text-gray-600 hover:text-gray-900">
-                    Forgot your password?
+            <div class="mt-4 flex items-center justify-end">
+                <Link
+                    :href="route('register')"
+                    class="text-sm text-gray-600 underline hover:text-gray-900"
+                >
+                    Don't have an account?
                 </Link>
 
-                <JetButton class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                <JetButton
+                    class="ml-4"
+                    :class="{ 'opacity-25': form.processing }"
+                    :disabled="form.processing"
+                >
                     Log in
                 </JetButton>
             </div>
