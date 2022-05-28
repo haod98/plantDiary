@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Room;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -24,7 +25,7 @@ class RoomsController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render('Rooms/Create');
     }
 
     /**
@@ -35,7 +36,10 @@ class RoomsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Room::create([
+            'room' => $request->name,
+        ]);
+        return redirect("dashboard");
     }
 
     /**
