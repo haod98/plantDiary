@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Plant;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -18,7 +19,9 @@ class PlantsController extends Controller
      */
     public function index()
     {
-        return redirect("dashboard");
+
+        $plants = User::find(auth()->user()->id)->plants;
+        return Inertia::render('Dashboard', compact('plants'));
     }
 
     /**
