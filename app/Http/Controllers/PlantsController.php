@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Plant;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Inertia\Inertia;
 use Symfony\Component\VarDumper\VarDumper;
@@ -17,7 +18,7 @@ class PlantsController extends Controller
      */
     public function index()
     {
-        //
+        return redirect("dashboard");
     }
 
     /**
@@ -43,7 +44,8 @@ class PlantsController extends Controller
             'description' => $request->description,
             'days_to_water' => $request->daysToWater,
             'water_count' => $request->waterCount,
-            'sun' => $request->sun
+            'sun' => $request->sun,
+            'user_id' => auth()->user()->id
         ]);
         return redirect("dashboard");
     }
