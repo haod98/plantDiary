@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Plant;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Inertia\Inertia;
+use Symfony\Component\VarDumper\VarDumper;
 
 class PlantsController extends Controller
 {
@@ -35,6 +38,14 @@ class PlantsController extends Controller
      */
     public function store(Request $request)
     {
+        Plant::create([
+            'name' => $request->plantName,
+            'description' => $request->description,
+            'days_to_water' => $request->daysToWater,
+            'water_count' => $request->waterCount,
+            'sun' => $request->sun
+        ]);
+        return redirect("dashboard");
     }
 
     /**
