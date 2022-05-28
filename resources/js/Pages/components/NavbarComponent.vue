@@ -10,6 +10,7 @@ defineComponent({
         PrimaryButton,
         SecondaryButton,
         BurgerMenu,
+        Link,
     },
     data() {
         return {
@@ -37,13 +38,13 @@ defineComponent({
                 <BurgerMenu @click="toggleNav" :isNavActive="isNavActive" />
             </div>
             <div class="mx-auto flex min-w-[80%] justify-center">
-                <router-link class="min-w-[80%]" :to="{ name: 'home' }">
+                <Link class="min-w-[80%]" :href="'/'">
                     <img
                         class="max-w-[600px]"
                         :src="logo"
                         alt="Plant diary logo"
                     />
-                </router-link>
+                </Link>
             </div>
         </div>
         <div
@@ -52,11 +53,11 @@ defineComponent({
         >
             <ul>
                 <li>
-                    <router-link
+                    <Link
                         class="text-lg font-light text-white hover:font-normal hover:underline hover:decoration-plantDiary-100"
-                        :to="{ name: 'home' }"
-                        >Home</router-link
-                    >
+                        :href="'/'"
+                        >Home
+                    </Link>
                 </li>
                 <li v-for="navItem in navItems" :key="navItem.id">
                     <a
@@ -67,12 +68,12 @@ defineComponent({
                 </li>
             </ul>
             <div class="flex flex-col items-start justify-start gap-3">
-                <router-link
-                    :to="{ name: 'signUp' }"
+                <Link
+                    :href="route('register')"
                     class="font-bold text-plantDiary-50"
                 >
                     Sign Up
-                </router-link>
+                </Link>
             </div>
         </div>
     </nav>
@@ -80,9 +81,9 @@ defineComponent({
     <nav class="hidden lg:mt-4 lg:block">
         <ul class="flex justify-between">
             <li>
-                <router-link :to="{ name: 'home' }">
+                <Link :href="route('login')">
                     <img class="w-56" :src="logo" alt="Plant diary logo" />
-                </router-link>
+                </Link>
             </li>
             <li v-for="navItem in navItems" :key="navItem.id">
                 <a

@@ -1,18 +1,20 @@
-<script setup>
+<script>
 import { defineComponent } from "vue";
 import PrimaryHeading from "../components/headings/PrimaryHeading.vue";
 import StrongText from "./headings/StrongText.vue";
 import UnderlineButton from "./buttons/UnderlineButton.vue";
 import PrimaryButton from "./buttons/PrimaryButton.vue";
 import plantHeroImg from "../../../assets/img/plantHero.png";
-defineComponent({
+import { Link } from "@inertiajs/inertia-vue3";
+export default {
     components: {
         PrimaryHeading,
         StrongText,
         UnderlineButton,
         PrimaryButton,
+        Link,
     },
-});
+};
 </script>
 
 <template>
@@ -44,9 +46,9 @@ defineComponent({
             <PrimaryButton class="hidden lg:block" buttonText="Sign Up" />
         </div>
         <div class="mx-auto text-center lg:hidden">
-            <router-link :to="{ name: 'signUp' }">
+            <Link :href="route('register')">
                 <PrimaryButton buttonText="Sign up" class="inline-block" />
-            </router-link>
+            </Link>
         </div>
     </div>
 </template>
