@@ -63,13 +63,13 @@ export default defineComponent({
         >
             <PlantCardComponent :hide-drop-down="true"></PlantCardComponent>
             <PlantCardComponent
-                plantImg="ficusDummy.jpg"
+                plantImg="../../../assets/img/ficusDummy.jpg"
                 altImg="An image of a ficus plant in a white pot"
                 class="absolute top-0 left-2/4 -z-10 scale-90 opacity-40"
                 :hide-drop-down="true"
             ></PlantCardComponent>
             <PlantCardComponent
-                plantImg="fiddleDummy.jpg"
+                plantImg="../../../assets/img/fiddleDummy.jpg"
                 altImg="An image of a ficus plant in a white pot"
                 class="absolute top-0 right-2/4 -z-10 scale-90 opacity-40"
                 :hideDropDown="true"
@@ -110,7 +110,7 @@ export default defineComponent({
         <div class="mb-7 lg:col-start-7 lg:col-end-9 xl:col-end-10">
             <p class="mb-2 text-center text-2xl">Week 1</p>
             <PlantCardComponent
-                plantImg="snakePlantSmall.jpg"
+                plantImg="../../../assets/img/snakePlantSmall.jpg"
                 title="Snake plant"
                 altImg="A young snake plant in a white pot"
                 :hideDropDown="true"
@@ -119,7 +119,7 @@ export default defineComponent({
         <div class="lg:col-start-11 lg:col-end-13 lg:mr-10 xl:col-start-10">
             <p class="mb-2 text-center text-2xl">Week 6</p>
             <PlantCardComponent
-                plantImg="snakePlantLarge.jpg"
+                plantImg="../../../assets/img/snakePlantLarge.jpg"
                 title="Snake plant"
                 altImg="A big snake plant on the floor in a black pot"
                 :hideDropDown="true"
