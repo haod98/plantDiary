@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Room;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -15,7 +16,8 @@ class RoomsController extends Controller
      */
     public function index()
     {
-        return Inertia::render('Rooms/Index');
+        $rooms = User::find(auth()->user()->id)->rooms;
+        return Inertia::render('Rooms/Index', compact('rooms'));
     }
 
     /**
@@ -37,7 +39,7 @@ class RoomsController extends Controller
     public function store(Request $request)
     {
         Room::create([
-            'room' => $request->name,
+            'name' => $request->name,
             'user_id' => auth()->user()->id
         ]);
         return redirect(route("rooms.index"));

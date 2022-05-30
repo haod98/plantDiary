@@ -64,7 +64,7 @@ class User extends Authenticatable
         return $this->hasMany(Plant::class);
     }
 
-    public function users()
+    public function rooms()
     {
         return $this->hasMany(Room::class);
     }
