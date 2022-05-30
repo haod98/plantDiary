@@ -486,16 +486,21 @@ const logout = () => {
             <!-- Page Content -->
             <main>
                 <slot />
-
                 <nav class="fixed bottom-0 w-full">
                     <ul class="flex justify-around bg-black py-6 text-white">
-                        <li>My plants</li>
-                        <li>My rooms</li>
+                        <Link :href="route('dashboard')">
+                            <li>My plants</li>
+                        </Link>
+                        <Link :href="route('rooms.index')">
+                            <li>My rooms</li>
+                        </Link>
                         <Link :href="route('plants.create')">
                             <li>Add</li>
                         </Link>
                         <li>Local shops</li>
-                        <li>Profile</li>
+                        <Link :href="route('profile.show')">
+                            <li>Profile</li>
+                        </Link>
                     </ul>
                 </nav>
             </main>
