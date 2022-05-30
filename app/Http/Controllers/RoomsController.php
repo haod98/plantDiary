@@ -38,8 +38,9 @@ class RoomsController extends Controller
     {
         Room::create([
             'room' => $request->name,
+            'user_id' => auth()->user()->id
         ]);
-        return redirect("dashboard");
+        return redirect(route("rooms.index"));
     }
 
     /**
