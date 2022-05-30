@@ -1,20 +1,16 @@
 <script>
 import AppLayout from "@/Layouts/AppLayout.vue";
 import Welcome from "@/Jetstream/Welcome.vue";
-import { format } from "date-fns";
+import Plants from "./Plants/Index.vue";
 export default {
-    props: {
-        plants: {
-            type: Object,
-        },
-    },
     components: {
         AppLayout,
         Welcome,
+        Plants,
     },
-    methods: {
-        formatDate(date) {
-            return format(new Date(date), "dd.MM.yyyy");
+    props: {
+        plants: {
+            type: Object,
         },
     },
 };
@@ -35,15 +31,6 @@ export default {
                 </div>
             </div>
         </div>
-        <div v-for="plant in plants" :key="plant.id">
-            <p>Plant Name: {{ plant.name }}</p>
-            <p>Plant Description: {{ plant.description }}</p>
-            <p>Days to water: {{ plant.days_to_water }}</p>
-            <p>Water: {{ plant.water_count }}</p>
-            <p>Sun: {{ plant.sun }}</p>
-            <p>Created at: {{ formatDate(plant.created_at) }}</p>
-            <p>Created at: {{ plant.created_at }}</p>
-            <br />
-        </div>
+        <Plants :plants="plants" />
     </AppLayout>
 </template>

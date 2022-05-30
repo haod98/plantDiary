@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PlantsController;
 use App\Http\Controllers\RoomsController;
 use Illuminate\Foundation\Application;
@@ -36,6 +37,6 @@ Route::middleware([
 ])->group(function () {
     Route::get(
         '/dashboard',
-        [PlantsController::class, 'index']
+        [DashboardController::class, 'index']
     )->name('dashboard');
 });
