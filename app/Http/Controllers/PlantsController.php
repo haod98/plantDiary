@@ -19,7 +19,6 @@ class PlantsController extends Controller
      */
     public function index()
     {
-
         $plants = User::find(auth()->user()->id)->plants;
         return Inertia::render('Dashboard', compact('plants'));
     }
