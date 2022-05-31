@@ -5,28 +5,26 @@ import AppLayout from "../../Layouts/AppLayout.vue";
 
 export default {
     setup(props) {
+        const plantPropExists = props.plant !== undefined;
         const form = useForm({
             plantName:
-                props.plant !== undefined && props.plant.name !== undefined
+                plantPropExists && props.plant.name !== undefined
                     ? props.plant.name
                     : "",
             description:
-                props.plant !== undefined &&
-                props.plant.description !== undefined
+                plantPropExists && props.plant.description !== undefined
                     ? props.plant.description
                     : "",
             daysToWater:
-                props.plant !== undefined &&
-                props.plant.days_to_water !== undefined
+                plantPropExists && props.plant.days_to_water !== undefined
                     ? props.plant.days_to_water
                     : "",
             waterCount:
-                props.plant !== undefined &&
-                props.plant.water_count !== undefined
+                plantPropExists && props.plant.water_count !== undefined
                     ? props.plant.water_count
                     : "",
             sun:
-                props.plant !== undefined && props.plant.sun !== undefined
+                plantPropExists && props.plant.sun !== undefined
                     ? props.plant.sun
                     : "",
         });
@@ -41,7 +39,7 @@ export default {
         function deletePlant() {
             Inertia.delete(route("plants.destroy", props.plant.id), form);
         }
-        return { form, createPlant, updatePlant, deletePlant };
+        return { form, plantPropExists, createPlant, updatePlant, deletePlant };
     },
     props: {
         plant: {
