@@ -62,11 +62,6 @@ class PlantsController extends Controller
      */
     public function show($id)
     {
-        $userId = auth()->user()->id;
-        $plant = Plant::findOrFail($id);
-        if ($plant->user_id !== $userId) abort(403);
-
-        return Inertia::render('Plants/PlantsForm', compact('plant'));
     }
 
     /**
@@ -77,7 +72,11 @@ class PlantsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $userId = auth()->user()->id;
+        $plant = Plant::findOrFail($id);
+        if ($plant->user_id !== $userId) abort(403);
+
+        return Inertia::render('Plants/PlantsForm', compact('plant'));
     }
 
     /**

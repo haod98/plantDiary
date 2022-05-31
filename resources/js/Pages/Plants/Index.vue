@@ -6,7 +6,7 @@
         <p>Water: {{ plant.water_count }}</p>
         <p>Sun: {{ plant.sun }}</p>
         <p>Created at: {{ formatDate(plant.created_at) }}</p>
-        <a :href="route('plants.show', plant.id)">Edit</a>
+        <a :href="route('plants.edit', plant.id)">Edit</a>
         <br />
     </div>
 </template>
