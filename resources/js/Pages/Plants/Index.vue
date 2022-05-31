@@ -6,13 +6,14 @@
         <p>Water: {{ plant.water_count }}</p>
         <p>Sun: {{ plant.sun }}</p>
         <p>Created at: {{ formatDate(plant.created_at) }}</p>
-        <a :href="route('plants.edit', plant.id)">Edit</a>
+        <Link :href="route('plants.edit', plant.id)">Edit</Link>
         <br />
     </div>
 </template>
 
 <script>
 import { format } from "date-fns";
+import { Link } from "@inertiajs/inertia-vue3";
 export default {
     methods: {
         formatDate(date) {
@@ -23,6 +24,9 @@ export default {
         plants: {
             type: Object,
         },
+    },
+    components: {
+        Link,
     },
 };
 </script>
