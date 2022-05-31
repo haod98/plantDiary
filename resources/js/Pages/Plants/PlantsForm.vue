@@ -32,7 +32,7 @@ export default {
         });
 
         function createPlant() {
-            Inertia.post(route("plants.create"), form);
+            Inertia.post(route("plants.store"), form);
         }
         function updatePlant() {
             console.log("update");
