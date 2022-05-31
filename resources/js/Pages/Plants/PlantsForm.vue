@@ -30,7 +30,18 @@ export default {
                     ? props.plant.sun
                     : "",
         });
-        return { form };
+
+        function createPlant() {
+            Inertia.post(route("plants.create"), form);
+        }
+        function updatePlant() {
+            console.log("update");
+            Inertia.put(route("plants.update", props.plant.id), form);
+        }
+        function deletePlant() {
+            Inertia.delete(route("plants.destroy", props.plant.id), form);
+        }
+        return { form, createPlant, updatePlant, deletePlant };
     },
     props: {
         plant: {
@@ -43,14 +54,7 @@ export default {
 <template>
     <AppLayout>
         <Head title="New Plant" />
-        <form
-            @submit.prevent="
-                plant === undefined
-                    ? form.post(route('plants.store'))
-                    : form.put(route('plants.update', plant.id))
-            "
-            class="flex flex-col gap-4 p-4"
-        >
+        <form @submit.prevent class="flex flex-col gap-4 p-4">
             <div class="flex flex-col">
                 <label for="plantName">Plant Name:</label>
                 <input v-model="form.plantName" id="plantName" type="text" />
@@ -95,9 +99,27 @@ export default {
                     <option value="3">Sun</option>
                 </select>
             </div>
-            <button v-if="plant === undefined" type="submit">Submit</button>
-            <button v-if="plant !== undefined" type="submit">Save</button>
-            <button v-if="plant !== undefined" type="submit">Delete</button>
+            <button
+                v-if="plant === undefined"
+                type="submit"
+                @click="createPlant"
+            >
+                Create
+            </button>
+            <button
+                v-if="plant !== undefined"
+                type="submit"
+                @click="updatePlant"
+            >
+                Save
+            </button>
+            <button
+                v-if="plant !== undefined"
+                type="submit"
+                @click="deletePlant"
+            >
+                Delete
+            </button>
         </form>
     </AppLayout>
 </template>
