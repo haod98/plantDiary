@@ -4,15 +4,38 @@ import { useForm, Head } from "@inertiajs/inertia-vue3";
 import AppLayout from "../../Layouts/AppLayout.vue";
 
 export default {
-    setup() {
+    setup(props) {
         const form = useForm({
-            plantName: "",
-            description: "",
-            daysToWater: "",
-            waterCount: "",
-            sun: "",
+            plantName:
+                props.plant !== undefined && props.plant.name !== undefined
+                    ? props.plant.name
+                    : "",
+            description:
+                props.plant !== undefined &&
+                props.plant.description !== undefined
+                    ? props.plant.description
+                    : "",
+            daysToWater:
+                props.plant !== undefined &&
+                props.plant.days_to_water !== undefined
+                    ? props.plant.days_to_water
+                    : "",
+            waterCount:
+                props.plant !== undefined &&
+                props.plant.water_count !== undefined
+                    ? props.plant.water_count
+                    : "",
+            sun:
+                props.plant !== undefined && props.plant.sun !== undefined
+                    ? props.plant.sun
+                    : "",
         });
         return { form };
+    },
+    props: {
+        plant: {
+            type: Object,
+        },
     },
     components: { AppLayout, Head },
 };
@@ -21,7 +44,11 @@ export default {
     <AppLayout>
         <Head title="New Plant" />
         <form
-            @submit.prevent="form.post(route('plants.store'))"
+            @submit.prevent="
+                plant === undefined
+                    ? form.post(route('plants.store'))
+                    : form.put(route('plants.update', plant.id))
+            "
             class="flex flex-col gap-4 p-4"
         >
             <div class="flex flex-col">
@@ -68,7 +95,9 @@ export default {
                     <option value="3">Sun</option>
                 </select>
             </div>
-            <button type="submit">Submit</button>
+            <button v-if="plant === undefined" type="submit">Submit</button>
+            <button v-if="plant !== undefined" type="submit">Save</button>
+            <button v-if="plant !== undefined" type="submit">Delete</button>
         </form>
     </AppLayout>
 </template>

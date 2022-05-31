@@ -60,7 +60,11 @@ class PlantsController extends Controller
      */
     public function show($id)
     {
-        //
+        $userId = auth()->user()->id;
+        $plant = Plant::findOrFail($id);
+        if ($plant->user_id !== $userId) abort(403);
+
+        return Inertia::render('Plants/PlantsForm', compact('plant'));
     }
 
     /**
@@ -83,7 +87,18 @@ class PlantsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $userId = auth()->user()->id;
+        $plant = Plant::findOrFail($id);
+        if ($plant->user_id !== $userId) abort(403);
+
+        $plant->update([
+            'name' => $request->plantName,
+            'description' => $request->description,
+            'days_to_water' => $request->daysToWater,
+            'water_count' => $request->waterCount,
+            'sun' => $request->sun,
+        ]);
+        return redirect('/dashboard');
     }
 
     /**
