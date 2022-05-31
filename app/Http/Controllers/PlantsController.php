@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Plant;
 use App\Models\User;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -12,6 +13,7 @@ use Symfony\Component\VarDumper\VarDumper;
 
 class PlantsController extends Controller
 {
+    use SoftDeletes;
     /**
      * Display a listing of the resource.
      *
@@ -109,6 +111,6 @@ class PlantsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        dd($id);
     }
 }
