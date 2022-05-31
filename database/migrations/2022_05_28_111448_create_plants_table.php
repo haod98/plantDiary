@@ -24,7 +24,7 @@ return new class extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->unsignedBigInteger('room_id')->nullable();
             $table->foreign('room_id')->references('id')->on('rooms');
-            $table->dropSoftDeletes();
+            $table->softDeletes();
             $table->timestamps();
         });
     }
