@@ -111,6 +111,8 @@ class PlantsController extends Controller
      */
     public function destroy($id)
     {
-        dd($id);
+        $plant = Plant::findOrFail($id);
+        $plant->delete();
+        return redirect("/dashboard");
     }
 }
