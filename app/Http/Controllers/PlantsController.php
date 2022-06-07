@@ -77,9 +77,10 @@ class PlantsController extends Controller
     {
         $userId = auth()->user()->id;
         $plant = Plant::findOrFail($id);
+        $rooms = User::findOrFail($userId)->rooms;
         if ($plant->user_id !== $userId) abort(403);
 
-        return Inertia::render('Plants/PlantsForm', compact('plant'));
+        return Inertia::render('Plants/PlantsForm', compact('plant', 'rooms'));
     }
 
     /**
@@ -101,6 +102,7 @@ class PlantsController extends Controller
             'days_to_water' => $request->daysToWater,
             'water_count' => $request->waterCount,
             'sun' => $request->sun,
+            'room_id' => $request->roomId
         ]);
         return redirect('/dashboard');
     }
