@@ -5,6 +5,7 @@
         <p>Days to water: {{ plant.days_to_water }}</p>
         <p>Water: {{ plant.water_count }}</p>
         <p>Sun: {{ plant.sun }}</p>
+        <p>Room: {{ plant.room_id }}</p>
         <p>Created at: {{ formatDate(plant.created_at) }}</p>
         <Link :href="route('plants.edit', plant.id)">Edit</Link>
         <br />

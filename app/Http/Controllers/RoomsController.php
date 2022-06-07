@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Plant;
 use App\Models\Room;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -53,7 +54,9 @@ class RoomsController extends Controller
      */
     public function show($id)
     {
-        //
+        $room = Room::find($id);
+        $plants = $room->plants;
+        return Inertia::render('Rooms/Show', compact('plants', 'room'));
     }
 
     /**
