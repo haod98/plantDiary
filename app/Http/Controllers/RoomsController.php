@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Plant;
 use App\Models\Room;
 use App\Models\User;
+use Faker\Provider\ar_EG\Internet;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -67,7 +68,8 @@ class RoomsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $room = Room::findOrFail($id);
+        return Inertia::render("Rooms/Edit", compact('room'));
     }
 
     /**
@@ -79,7 +81,11 @@ class RoomsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $room = Room::findOrFail($id);
+        $room->update([
+            'name' => $request->name,
+        ]);
+        return redirect('/rooms');
     }
 
     /**

@@ -30,6 +30,7 @@ export default {
         <p v-if="isRoomEmpty(rooms)">Your rooms list is empty</p>
         <div v-for="room in rooms" :key="room.id">
             <Link :href="route('rooms.show', room.id)">{{ room.name }}</Link>
+            <Link :href="route('rooms.edit', room.id)">Edit</Link>
         </div>
     </AppLayout>
 </template>
