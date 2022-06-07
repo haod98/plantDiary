@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Plant;
+use App\Models\Room;
 use App\Models\User;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Http\Request;
@@ -32,7 +33,8 @@ class PlantsController extends Controller
      */
     public function create()
     {
-        return Inertia::render('Plants/PlantsForm');
+        $rooms = User::find(auth()->user()->id)->rooms;
+        return Inertia::render('Plants/PlantsForm', compact('rooms'));
     }
 
     /**
@@ -49,7 +51,8 @@ class PlantsController extends Controller
             'days_to_water' => $request->daysToWater,
             'water_count' => $request->waterCount,
             'sun' => $request->sun,
-            'user_id' => auth()->user()->id
+            'user_id' => auth()->user()->id,
+            'room_id' => $request->roomId,
         ]);
         return redirect("dashboard");
     }

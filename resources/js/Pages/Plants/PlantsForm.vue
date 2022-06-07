@@ -23,6 +23,7 @@ export default {
                 plantPropExists && props.plant.water_count !== undefined
                     ? props.plant.water_count
                     : "",
+            roomId: "",
             sun:
                 plantPropExists && props.plant.sun !== undefined
                     ? props.plant.sun
@@ -43,6 +44,9 @@ export default {
     },
     props: {
         plant: {
+            type: Object,
+        },
+        rooms: {
             type: Object,
         },
     },
@@ -95,6 +99,18 @@ export default {
                     <option value="1">Shadow</option>
                     <option value="2">Half-shadow</option>
                     <option value="3">Sun</option>
+                </select>
+            </div>
+            <div class="flex flex-col">
+                <label for="room-id">Which room:</label>
+                <select v-model="form.roomId" name="room-id" id="room-id">
+                    <option
+                        v-for="room in rooms"
+                        :key="room.id"
+                        :value="room.id"
+                    >
+                        {{ room.name }}
+                    </option>
                 </select>
             </div>
             <button
