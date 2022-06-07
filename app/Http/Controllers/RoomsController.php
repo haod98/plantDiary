@@ -96,6 +96,8 @@ class RoomsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $room = room::findOrFail($id);
+        $room->delete();
+        return redirect("/rooms");
     }
 }
