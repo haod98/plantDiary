@@ -56,6 +56,11 @@ export default {
 <template>
     <AppLayout>
         <Head title="New Plant" />
+        <template #header>
+            <h2 class="text-xl font-semibold leading-tight text-gray-800">
+                My plants
+            </h2>
+        </template>
         <form @submit.prevent class="flex flex-col gap-4 p-4">
             <div class="flex flex-col">
                 <label for="plantName">Plant Name:</label>

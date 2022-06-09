@@ -23,6 +23,11 @@ export default {
 <template>
     <Head title="Rooms" />
     <AppLayout>
+        <template #header>
+            <h2 class="text-xl font-semibold leading-tight text-gray-800">
+                My rooms
+            </h2>
+        </template>
         <Link :href="route('rooms.create')">
             <p>Create room</p>
         </Link>
