@@ -7,6 +7,7 @@ use App\Models\Room;
 use App\Models\User;
 use Faker\Provider\ar_EG\Internet;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Inertia\Inertia;
 
 class RoomsController extends Controller
@@ -96,8 +97,8 @@ class RoomsController extends Controller
      */
     public function destroy($id)
     {
-        $room = room::findOrFail($id);
-        $room->delete();
+        DB::table('plants')->where('room_id', $id)->update(['room_id' => null]);
+        Room::findOrFail($id)->delete();
         return redirect("/rooms");
     }
 }
