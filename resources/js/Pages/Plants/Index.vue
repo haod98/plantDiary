@@ -1,20 +1,20 @@
 <template>
     <div v-for="plant in plants" :key="plant.id">
-        <p>Plant Name: {{ plant.name }}</p>
-        <p>Plant Description: {{ plant.description }}</p>
-        <p>Days to water: {{ plant.days_to_water }}</p>
-        <p>Water: {{ plant.water_count }}</p>
-        <p>Sun: {{ plant.sun }}</p>
-        <p>Room: {{ plant.room_id }}</p>
-        <p>Created at: {{ formatDate(plant.created_at) }}</p>
+        <PlantDashboard
+            :title="plant.name"
+            :description="plant.description"
+            :daysToWater="plant.days_to_water"
+            :waterCount="plant.water_count"
+            :sun="plant.sun"
+        />
         <Link :href="route('plants.edit', plant.id)">Edit</Link>
-        <br />
     </div>
 </template>
 
 <script>
 import { format } from "date-fns";
 import { Link } from "@inertiajs/inertia-vue3";
+import PlantDashboard from "../components/dashboardCards/PlantDashboard.vue";
 export default {
     methods: {
         formatDate(date) {
@@ -28,6 +28,7 @@ export default {
     },
     components: {
         Link,
+        PlantDashboard,
     },
 };
 </script>

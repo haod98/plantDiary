@@ -2,11 +2,13 @@
 import AppLayout from "@/Layouts/AppLayout.vue";
 import Welcome from "@/Jetstream/Welcome.vue";
 import Plants from "./Plants/Index.vue";
+import CardContent from "./components/dashboardCards/CardContent.vue";
 export default {
     components: {
         AppLayout,
         Welcome,
         Plants,
+        CardContent,
     },
     props: {
         plants: {
