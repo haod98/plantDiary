@@ -1,17 +1,23 @@
-<script setup>
+<script>
 import { defineComponent } from "vue";
 import noSun from "../../../../assets/svg/no-sun.svg";
 import halfSun from "../../../../assets/svg/half-shadow.svg";
 import sun from "../../../../assets/svg/sun.svg";
 
-defineComponent({
+export default defineComponent({
     data() {
         return {
             svg: "w-8 cursor-pointer",
+            noSun,
+            halfSun,
+            sun,
         };
     },
     props: {
-        isPopUpOpen: Boolean,
+        isPopUpOpen: {
+            type: Boolean,
+            default: false,
+        },
     },
     methods: {
         getSunIconPath($event) {
