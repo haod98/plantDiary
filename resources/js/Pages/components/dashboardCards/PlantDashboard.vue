@@ -7,18 +7,15 @@ const IMG_PATH = "./src/assets/img/";
 export default defineComponent({
     components: { CardIcons, CardContent },
     props: {
-        title: {
-            type: String,
-        },
-        description: {
-            type: String,
-        },
-        plantImg: {
-            type: String,
-        },
-        altImg: {
-            type: String,
-        },
+        title: String,
+        description: String,
+        plantImg: String,
+        altImg: String,
+        daysToWater: Number,
+        waterCount: Number,
+        sun: Number,
+        openWaterPopUp: Boolean,
+        openSunPopUp: Boolean,
         isCollapsed: {
             type: Boolean,
             default: false,
@@ -27,17 +24,6 @@ export default defineComponent({
             type: Boolean,
             default: false,
         },
-        daysToWater: {
-            type: Number,
-        },
-        waterCount: {
-            type: Number,
-        },
-        sun: {
-            type: Number,
-        },
-        openWaterPopUp: Boolean,
-        openSunPopUp: Boolean,
     },
     data() {
         return {
@@ -78,6 +64,7 @@ export default defineComponent({
                 :days-to-water="daysToWater"
                 :openWaterPopUp="openWaterPopUp"
                 :open-sun-pop-up="openSunPopUp"
+                :sunLevel="sun"
             />
             <CardContent
                 :plantName="title"

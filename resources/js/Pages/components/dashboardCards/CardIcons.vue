@@ -3,6 +3,9 @@ import { defineComponent } from "vue";
 import WaterPopUp from "./WaterPopUp.vue";
 import SunPopUp from "./SunPopUp.vue";
 import sunImagePath from "../../../../assets/svg/sun.svg";
+import noSun from "../../../../assets/svg/no-sun.svg";
+import halfSun from "../../../../assets/svg/half-shadow.svg";
+import sun from "../../../../assets/svg/sun.svg";
 
 export default defineComponent({
     data() {
@@ -13,6 +16,9 @@ export default defineComponent({
             showWaterPopUp: false,
             showSunPopUp: false,
             sunImagePath,
+            noSun,
+            halfSun,
+            sun,
         };
     },
     methods: {
@@ -32,12 +38,24 @@ export default defineComponent({
         getSunIconPath(iconPath) {
             this.sunImagePath = iconPath;
         },
+        getSunLevelIcon(level) {
+            switch (level) {
+                case 1:
+                    return this.noSun;
+                case 2:
+                    return this.halfSun;
+                case 3:
+                    return this.sun;
+                default:
+                    return this.noSun;
+            }
+        },
     },
     props: {
         openWaterPopUp: Boolean,
         openSunPopUp: Boolean,
         waterCount: Number,
-        sun: Number,
+        sunLevel: Number,
         daysToWater: Number,
     },
     mounted() {
@@ -84,7 +102,7 @@ export default defineComponent({
         />
         <img
             @click="toggleSunPopUp"
-            :src="sunImagePath"
+            :src="getSunLevelIcon(sunLevel)"
             alt="A sun icon"
             class="absolute left-2/4 h-8 -translate-x-2/4 cursor-pointer"
         />
