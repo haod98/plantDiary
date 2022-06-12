@@ -2,13 +2,16 @@
 defineProps({
     type: {
         type: String,
-        default: 'submit',
+        default: "submit",
     },
 });
 </script>
 
 <template>
-    <button :type="type" class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 disabled:opacity-25 transition">
+    <button
+        :type="type"
+        class="inline-flex items-center rounded-md border border-transparent bg-plantDiary-100 px-4 py-2 text-xs font-semibold uppercase tracking-widest text-white transition hover:bg-plantDiary-150 focus:border-gray-900 focus:outline-none focus:ring focus:ring-gray-300 active:bg-plantDiary-150 disabled:opacity-25"
+    >
         <slot />
     </button>
 </template>
