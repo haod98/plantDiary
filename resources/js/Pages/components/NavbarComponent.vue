@@ -1,11 +1,11 @@
-<script setup>
+<script>
 import { defineComponent } from "vue";
 import PrimaryButton from "./buttons/PrimaryButton.vue";
 import SecondaryButton from "./buttons/SecondaryButton.vue";
 import BurgerMenu from "./buttons/BurgerMenu.vue";
 import logo from "../../../assets/logo.svg";
 import { Link } from "@inertiajs/inertia-vue3";
-defineComponent({
+export default defineComponent({
     components: {
         PrimaryButton,
         SecondaryButton,
@@ -20,6 +20,7 @@ defineComponent({
                 { id: 2, item: "Contact" },
             ],
             isNavActive: false,
+            logo,
         };
     },
     methods: {

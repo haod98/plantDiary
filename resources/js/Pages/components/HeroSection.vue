@@ -6,7 +6,7 @@ import UnderlineButton from "./buttons/UnderlineButton.vue";
 import PrimaryButton from "./buttons/PrimaryButton.vue";
 import plantHeroImg from "../../../assets/img/plantHero.png";
 import { Link } from "@inertiajs/inertia-vue3";
-export default {
+export default defineComponent({
     components: {
         PrimaryHeading,
         StrongText,
@@ -14,7 +14,12 @@ export default {
         PrimaryButton,
         Link,
     },
-};
+    data() {
+        return {
+            plantHeroImg,
+        };
+    },
+});
 </script>
 
 <template>
@@ -33,7 +38,7 @@ export default {
             class="justify-center lg:col-start-4 lg:col-end-10 lg:flex lg:self-center"
         >
             <img
-                src="../../../assets/img/plantHero.png"
+                :src="plantHeroImg"
                 alt="A plant in a white pot, with many leaves hanging down"
             />
         </div>

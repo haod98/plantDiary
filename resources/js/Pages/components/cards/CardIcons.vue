@@ -2,6 +2,7 @@
 import { defineComponent } from "vue";
 import WaterPopUp from "./WaterPopUp.vue";
 import SunPopUp from "./SunPopUp.vue";
+import sunImagePath from "../../../../assets/svg/sun.svg";
 
 export default defineComponent({
     data() {
@@ -11,7 +12,7 @@ export default defineComponent({
             waterDropsIndex: 1,
             showWaterPopUp: false,
             showSunPopUp: false,
-            sunImagePath: `../../../../assets/svg/sun.svg`,
+            sunImagePath,
         };
     },
     methods: {

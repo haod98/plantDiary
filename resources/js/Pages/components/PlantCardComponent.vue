@@ -2,6 +2,11 @@
 import { defineComponent } from "vue";
 import CardIcons from "./cards/CardIcons.vue";
 import CardContent from "./cards/CardContent.vue";
+import monstera from "../../../assets/img/dummyImage.jpg";
+import ficus from "../../../assets/img/ficusDummy.jpg";
+import fiddle from "../../../assets/img/fiddleDummy.jpg";
+import snakePlantLarge from "../../../assets/img/snakePlantLarge.jpg";
+import snakePlantSmall from "../../../assets/img/snakePlantSmall.jpg";
 
 const IMG_PATH = "./src/assets/img/";
 export default defineComponent({
@@ -20,7 +25,6 @@ export default defineComponent({
         },
         plantImg: {
             type: String,
-            default: "../../../assets/img/dummyImage.png",
         },
         altImg: {
             type: String,
@@ -41,11 +45,30 @@ export default defineComponent({
         return {
             IMG_PATH,
             collapseImg: false,
+            monstera,
+            fiddle,
+            ficus,
+            snakePlantSmall,
+            snakePlantLarge,
         };
     },
     methods: {
         collapseCard(collapseState) {
             this.collapseImg = collapseState;
+        },
+        getPlantImg(img) {
+            switch (img) {
+                case "1":
+                    return this.monstera;
+                case "2":
+                    return this.fiddle;
+                case "3":
+                    return this.ficus;
+                case "4":
+                    return this.snakePlantSmall;
+                case "5":
+                    return this.snakePlantLarge;
+            }
         },
     },
     mounted() {
@@ -65,7 +88,7 @@ export default defineComponent({
         >
             <div class="mt-[6%] flex justify-center">
                 <img
-                    :src="plantImg"
+                    :src="getPlantImg(plantImg)"
                     :alt="altImg"
                     class="max-h-[320px] w-full max-w-[320px] rounded-2xl transition-all duration-500 ease-in-out"
                     :class="[collapseImg ? 'max-h-28 object-cover' : '']"

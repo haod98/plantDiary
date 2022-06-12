@@ -61,15 +61,18 @@ export default defineComponent({
             class="relative lg:col-start-8 lg:col-end-13 2xl:col-start-7 2xl:col-end-12"
             data-cy="first-feature"
         >
-            <PlantCardComponent :hide-drop-down="true"></PlantCardComponent>
             <PlantCardComponent
-                plantImg="../../../assets/img/ficusDummy.jpg"
+                :hide-drop-down="true"
+                plant-img="1"
+            ></PlantCardComponent>
+            <PlantCardComponent
+                plantImg="2"
                 altImg="An image of a ficus plant in a white pot"
                 class="absolute top-0 left-2/4 -z-10 scale-90 opacity-40"
                 :hide-drop-down="true"
             ></PlantCardComponent>
             <PlantCardComponent
-                plantImg="../../../assets/img/fiddleDummy.jpg"
+                plantImg="3"
                 altImg="An image of a ficus plant in a white pot"
                 class="absolute top-0 right-2/4 -z-10 scale-90 opacity-40"
                 :hideDropDown="true"
@@ -90,8 +93,10 @@ export default defineComponent({
                 :isCollapsed="true"
                 :openWaterPopUp="true"
                 :hideDropDown="true"
+                plant-img="1"
             />
             <PlantCardComponent
+                plant-img="1"
                 :isCollapsed="true"
                 :openSunPopUp="true"
                 :hideDropDown="true"
@@ -110,7 +115,7 @@ export default defineComponent({
         <div class="mb-7 lg:col-start-7 lg:col-end-9 xl:col-end-10">
             <p class="mb-2 text-center text-2xl">Week 1</p>
             <PlantCardComponent
-                plantImg="../../../assets/img/snakePlantSmall.jpg"
+                plantImg="4"
                 title="Snake plant"
                 altImg="A young snake plant in a white pot"
                 :hideDropDown="true"
@@ -119,7 +124,7 @@ export default defineComponent({
         <div class="lg:col-start-11 lg:col-end-13 lg:mr-10 xl:col-start-10">
             <p class="mb-2 text-center text-2xl">Week 6</p>
             <PlantCardComponent
-                plantImg="../../../assets/img/snakePlantLarge.jpg"
+                plantImg="5"
                 title="Snake plant"
                 altImg="A big snake plant on the floor in a black pot"
                 :hideDropDown="true"

@@ -1,9 +1,9 @@
-<script setup>
+<script>
 import NavbarComponent from "./components/NavbarComponent.vue";
 import FooterComponent from "./components/FooterComponent.vue";
 import HomeView from "./HomeView.vue";
 import { defineComponent } from "vue";
-defineComponent({
+export default defineComponent({
     components: {
         NavbarComponent,
         HomeView,
