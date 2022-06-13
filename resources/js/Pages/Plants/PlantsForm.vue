@@ -2,6 +2,9 @@
 import { Inertia } from "@inertiajs/inertia";
 import { useForm, Head } from "@inertiajs/inertia-vue3";
 import AppLayout from "../../Layouts/AppLayout.vue";
+import JetButton from "../../Jetstream/Button.vue";
+import JetInput from "../../Jetstream/Input.vue";
+import JetLabel from "../../Jetstream/Label.vue";
 
 export default {
     setup(props) {
@@ -50,7 +53,7 @@ export default {
             type: Object,
         },
     },
-    components: { AppLayout, Head },
+    components: { AppLayout, Head, JetButton, JetInput, JetLabel },
 };
 </script>
 <template>
@@ -63,8 +66,8 @@ export default {
         </template>
         <form @submit.prevent class="flex flex-col gap-4 p-4">
             <div class="flex flex-col">
-                <label for="plantName">Plant Name:</label>
-                <input v-model="form.plantName" id="plantName" type="text" />
+                <JetLabel for="plantName" value="Plant Name:" />
+                <JetInput id="plantName" v-model="form.plantName" type="text" />
             </div>
             <div class="flex flex-col">
                 <label for="description">Plant Description:</label>
@@ -77,11 +80,11 @@ export default {
                 ></textarea>
             </div>
             <div class="flex flex-col">
-                <label for="days-to-water">Days to water:</label>
-                <input
+                <JetLabel for="days-to-water" value="Days to water" />
+                <JetInput
+                    id="days-to-water"
                     v-model="form.daysToWater"
                     type="number"
-                    id="days-to-water"
                 />
             </div>
             <div class="flex flex-col">
@@ -118,27 +121,24 @@ export default {
                     </option>
                 </select>
             </div>
-            <button
-                v-if="plant === undefined"
-                type="submit"
-                @click="createPlant"
-            >
+            <JetButton v-if="plant === undefined" @click="createPlant">
                 Create
-            </button>
-            <button
+            </JetButton>
+            <JetButton
                 v-if="plant !== undefined"
                 type="submit"
                 @click="updatePlant"
             >
                 Save
-            </button>
-            <button
+            </JetButton>
+            <JetButton
+                button-style-type="danger"
                 v-if="plant !== undefined"
                 type="submit"
                 @click="deletePlant"
             >
                 Delete
-            </button>
+            </JetButton>
         </form>
     </AppLayout>
 </template>

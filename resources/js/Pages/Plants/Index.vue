@@ -7,7 +7,9 @@
             :waterCount="plant.water_count"
             :sun="plant.sun"
         />
-        <Link :href="route('plants.edit', plant.id)">Edit</Link>
+        <Link :href="route('plants.edit', plant.id)">
+            <JetButton buttonStyleType="edit"> Edit</JetButton>
+        </Link>
     </div>
 </template>
 
@@ -15,6 +17,7 @@
 import { format } from "date-fns";
 import { Link } from "@inertiajs/inertia-vue3";
 import PlantDashboard from "../components/dashboardCards/PlantDashboard.vue";
+import JetButton from "../../Jetstream/Button.vue";
 export default {
     methods: {
         formatDate(date) {
@@ -29,6 +32,7 @@ export default {
     components: {
         Link,
         PlantDashboard,
+        JetButton,
     },
 };
 </script>
