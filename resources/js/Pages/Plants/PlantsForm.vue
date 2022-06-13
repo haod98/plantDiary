@@ -70,13 +70,14 @@ export default {
                 <JetInput id="plantName" v-model="form.plantName" type="text" />
             </div>
             <div class="flex flex-col">
-                <label for="description">Plant Description:</label>
+                <JetLabel for="description" value="Plant Description:" />
                 <textarea
                     name="description"
                     id="description"
                     cols="30"
                     rows="10"
                     v-model="form.description"
+                    class="rounded-md border-gray-300 shadow-sm focus:ring focus:ring-plantDiary-100 focus:ring-opacity-50"
                 ></textarea>
             </div>
             <div class="flex flex-col">
@@ -88,8 +89,9 @@ export default {
                 />
             </div>
             <div class="flex flex-col">
-                <label for="water-count">How much water:</label>
+                <JetLabel for="description" value="Plant Description:" />
                 <select
+                    class="rounded-md border-gray-300 shadow-sm focus:ring focus:ring-plantDiary-100 focus:ring-opacity-50"
                     v-model="form.waterCount"
                     name="water-count"
                     id="water-count"
@@ -101,8 +103,13 @@ export default {
                 </select>
             </div>
             <div class="flex flex-col">
-                <label for="sun">How much sun?</label>
-                <select v-model="form.sun" name="sun" id="sun">
+                <JetLabel for="sun" value="How much sun" />
+                <select
+                    class="rounded-md border-gray-300 shadow-sm focus:ring focus:ring-plantDiary-100 focus:ring-opacity-50"
+                    v-model="form.sun"
+                    name="sun"
+                    id="sun"
+                >
                     <option value="0" selected>None</option>
                     <option value="1">Shadow</option>
                     <option value="2">Half-shadow</option>
@@ -110,8 +117,13 @@ export default {
                 </select>
             </div>
             <div class="flex flex-col">
-                <label for="room-id">Which room:</label>
-                <select v-model="form.roomId" name="room-id" id="room-id">
+                <JetLabel for="room-id" value="Which room" />
+                <select
+                    class="rounded-md border-gray-300 shadow-sm focus:ring focus:ring-plantDiary-100 focus:ring-opacity-50"
+                    v-model="form.roomId"
+                    name="room-id"
+                    id="room-id"
+                >
                     <option
                         v-for="room in rooms"
                         :key="room.id"
