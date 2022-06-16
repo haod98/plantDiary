@@ -31,6 +31,7 @@ export default {
                 plantPropExists && props.plant.sun !== undefined
                     ? props.plant.sun
                     : "",
+            image: null,
         });
 
         function createPlant() {
@@ -133,6 +134,22 @@ export default {
                     </option>
                 </select>
             </div>
+            <div class="flex flex-col">
+                <JetLabel for="images"> Add images </JetLabel>
+                <input
+                    type="file"
+                    id="images"
+                    name="images"
+                    @input="form.image = $event.target.files[0]"
+                />
+            </div>
+            <progress
+                v-if="form.progress"
+                :value="form.progress.percentage"
+                max="100"
+            >
+                {{ form.progress.percentage }}%
+            </progress>
             <JetButton v-if="plant === undefined" @click="createPlant">
                 Create
             </JetButton>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Plant;
+use App\Models\PlantImage;
 use App\Models\Room;
 use App\Models\User;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -14,6 +15,7 @@ use Symfony\Component\VarDumper\VarDumper;
 
 class PlantsController extends Controller
 {
+    const BASE_PATH_TO_PLANTS_IMG = "/storage/plantImage/";
     use SoftDeletes;
     /**
      * Display a listing of the resource.
@@ -54,6 +56,15 @@ class PlantsController extends Controller
             'user_id' => auth()->user()->id,
             'room_id' => $request->roomId,
         ]);
+
+        if ($request->hasFile('image')) {
+            $newFileName = time() . $request->file('image')->getClientOriginalName();
+            $request->file('image')->storeAs('/public/plantImage', $newFileName);
+            PlantImage::create([
+                'image_path' => self::BASE_PATH_TO_PLANTS_IMG . $newFileName,
+                'plant_id' => Plant::latest('id')->value('id')
+            ]);
+        }
         return redirect("dashboard");
     }
 

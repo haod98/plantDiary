@@ -19,4 +19,9 @@ class Plant extends Model
     {
         return $this->belongsTo(Room::class);
     }
+
+    public function plantImages()
+    {
+        return $this->hasMany(PlantImage::class);
+    }
 }
