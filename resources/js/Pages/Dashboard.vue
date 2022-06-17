@@ -14,6 +14,9 @@ export default {
         plants: {
             type: Object,
         },
+        tests: {
+            type: Object,
+        },
     },
 };
 </script>
@@ -34,5 +37,6 @@ export default {
             </div>
         </div>
         <Plants :plants="plants" />
+        <p>{{ plants }}</p>
     </AppLayout>
 </template>
