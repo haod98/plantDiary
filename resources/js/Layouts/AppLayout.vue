@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 import { Inertia } from "@inertiajs/inertia";
 import { Head, Link } from "@inertiajs/inertia-vue3";
 import JetApplicationMark from "@/Jetstream/ApplicationMark.vue";
@@ -26,6 +26,19 @@ const switchToTeam = (team) => {
         }
     );
 };
+
+const navbar = ref();
+
+// onMounted(() => {
+//     height = getNavBarHeight;
+// });
+
+// let height;
+// const getNavBarHeight = () => {
+//     const nav = navbar.value;
+//     console.log(nav.clientHeight);
+//     return nav.clientHeight;
+// };
 
 const logout = () => {
     Inertia.post(route("logout"));
@@ -484,9 +497,9 @@ const logout = () => {
             </header>
 
             <!-- Page Content -->
-            <main>
+            <main style="margin-bottom: 72px">
                 <slot />
-                <nav class="fixed bottom-0 w-full">
+                <nav ref="navbar" class="navbar-bottom fixed bottom-0 w-full">
                     <ul class="flex justify-around bg-black py-6 text-white">
                         <Link :href="route('dashboard')">
                             <li>My plants</li>
