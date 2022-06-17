@@ -7,6 +7,7 @@
             :waterCount="plant.water_count"
             :sun="plant.sun"
         />
+        <p>{{ plant.image_path }}</p>
         <Link :href="route('plants.edit', plant.id)">
             <JetButton buttonStyleType="edit"> Edit</JetButton>
         </Link>

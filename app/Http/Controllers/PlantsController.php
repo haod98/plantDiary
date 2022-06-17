@@ -24,7 +24,12 @@ class PlantsController extends Controller
      */
     public function index()
     {
-        $plants = User::find(auth()->user()->id)->plants;
+        $userId = auth()->user()->id;
+        $plants = User::find($userId)->plants;
+        $plants = DB::table('plant_images')
+            ->rightJoin('plants', 'plant_images.plant_id', '=', 'plants.id')
+            ->where('user_id', '=', $userId)
+            ->get();
         return Inertia::render('Dashboard', compact('plants'));
     }
 
