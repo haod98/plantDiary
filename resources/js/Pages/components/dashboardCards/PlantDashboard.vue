@@ -53,7 +53,12 @@ export default defineComponent({
         >
             <div class="mt-[6%] flex justify-center">
                 <img
-                    :src="plantImg"
+                    :src="
+                        plantImg !== null
+                            ? '/plantImages?image=' +
+                              encodeURIComponent(plantImg)
+                            : ''
+                    "
                     :alt="altImg"
                     class="max-h-[320px] w-full max-w-[320px] rounded-2xl transition-all duration-500 ease-in-out"
                     :class="[collapseImg ? 'max-h-28 object-cover' : '']"

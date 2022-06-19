@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 use Symfony\Component\VarDumper\VarDumper;
 
@@ -31,6 +32,15 @@ class PlantsController extends Controller
             ->where('user_id', '=', $userId)
             ->get();
         return Inertia::render('Dashboard', compact('plants'));
+    }
+
+    public function loadImage(Request $request)
+    {
+        $image = $request->image;
+        $content = Storage::disk('public')->get($image);
+        return response($content, 200, [
+            'Content-type' => 'image/jpg'
+        ]);
     }
 
     /**
@@ -63,10 +73,8 @@ class PlantsController extends Controller
         ]);
 
         if ($request->hasFile('image')) {
-            $newFileName = time() . $request->file('image')->getClientOriginalName();
-            $request->file('image')->storeAs('/public/plantImage', $newFileName);
             PlantImage::create([
-                'image_path' => self::BASE_PATH_TO_PLANTS_IMG . $newFileName,
+                'image_path' => $request->file('image')->store('plantsImage', 'public'),
                 'plant_id' => Plant::latest('id')->value('id')
             ]);
         }

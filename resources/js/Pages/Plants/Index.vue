@@ -6,8 +6,8 @@
             :daysToWater="plant.days_to_water"
             :waterCount="plant.water_count"
             :sun="plant.sun"
+            :plantImg="plant.image_path"
         />
-        <p>{{ plant.image_path }}</p>
         <Link :href="route('plants.edit', plant.id)">
             <JetButton buttonStyleType="edit"> Edit</JetButton>
         </Link>
@@ -23,6 +23,9 @@ export default {
     methods: {
         formatDate(date) {
             return format(new Date(date), "dd.MM.yyyy");
+        },
+        test(uri) {
+            return encodeURI(uri);
         },
     },
     props: {

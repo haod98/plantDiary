@@ -27,6 +27,7 @@ Route::get('/', function () {
     ]);
 });
 
+Route::get('/plantImages', [PlantsController::class, 'loadImage']);
 Route::resource('plants', PlantsController::class);
 Route::resource('rooms', RoomsController::class);
 
