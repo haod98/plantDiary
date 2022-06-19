@@ -2,6 +2,7 @@
 import { defineComponent } from "vue";
 import CardIcons from "../dashboardCards/CardIcons.vue";
 import CardContent from "../dashboardCards/CardContent.vue";
+import { loadImage } from "../../../helpers";
 
 const IMG_PATH = "./src/assets/img/";
 export default defineComponent({
@@ -29,6 +30,7 @@ export default defineComponent({
         return {
             IMG_PATH,
             collapseImg: false,
+            loadImage,
         };
     },
     methods: {
@@ -53,12 +55,7 @@ export default defineComponent({
         >
             <div class="mt-[6%] flex justify-center">
                 <img
-                    :src="
-                        plantImg !== null
-                            ? '/plantImages?image=' +
-                              encodeURIComponent(plantImg)
-                            : ''
-                    "
+                    :src="plantImg !== null ? loadImage(plantImg) : ''"
                     :alt="altImg"
                     class="max-h-[320px] w-full max-w-[320px] rounded-2xl transition-all duration-500 ease-in-out"
                     :class="[collapseImg ? 'max-h-28 object-cover' : '']"
