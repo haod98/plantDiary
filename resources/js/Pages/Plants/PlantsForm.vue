@@ -40,7 +40,10 @@ export default {
             Inertia.post(route("plants.store"), form);
         }
         function updatePlant() {
-            Inertia.put(route("plants.update", props.plant.id), form);
+            Inertia.post(route("plants.update", props.plant.id), {
+                ...form.data(),
+                _method: "put",
+            });
         }
         function deletePlant() {
             Inertia.delete(route("plants.destroy", props.plant.id), form);

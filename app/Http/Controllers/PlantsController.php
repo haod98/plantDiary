@@ -54,6 +54,16 @@ class PlantsController extends Controller
         return Inertia::render('Plants/PlantsForm', compact('rooms'));
     }
 
+    public static function handleImageUpload(Request $request)
+    {
+        if ($request->hasFile('image')) {
+            PlantImage::create([
+                'image_path' => $request->file('image')->store('plantsImage', 'public'),
+                'plant_id' => Plant::latest('id')->value('id')
+            ]);
+        }
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -72,12 +82,7 @@ class PlantsController extends Controller
             'room_id' => $request->roomId,
         ]);
 
-        if ($request->hasFile('image')) {
-            PlantImage::create([
-                'image_path' => $request->file('image')->store('plantsImage', 'public'),
-                'plant_id' => Plant::latest('id')->value('id')
-            ]);
-        }
+        PlantsController::handleImageUpload($request);
         return redirect("dashboard");
     }
 
@@ -129,8 +134,9 @@ class PlantsController extends Controller
             'days_to_water' => $request->daysToWater,
             'water_count' => $request->waterCount,
             'sun' => $request->sun,
-            'room_id' => $request->roomId
+            'room_id' => $request->roomId,
         ]);
+        PlantsController::handleImageUpload($request);
         return redirect('/dashboard');
     }
 
