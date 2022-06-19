@@ -15,19 +15,10 @@
 </template>
 
 <script>
-import { format } from "date-fns";
 import { Link } from "@inertiajs/inertia-vue3";
 import PlantDashboard from "../components/dashboardCards/PlantDashboard.vue";
 import JetButton from "../../Jetstream/Button.vue";
 export default {
-    methods: {
-        formatDate(date) {
-            return format(new Date(date), "dd.MM.yyyy");
-        },
-        test(uri) {
-            return encodeURI(uri);
-        },
-    },
     props: {
         plants: {
             type: Object,
