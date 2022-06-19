@@ -4,6 +4,7 @@ import { Link, Head, useForm } from "@inertiajs/inertia-vue3";
 import JetButton from "../../Jetstream/Button.vue";
 import JetInput from "../../Jetstream/Input.vue";
 import JetLabel from "../../Jetstream/Label.vue";
+import SecondaryHeadingVue from "../components/headings/SecondaryHeading.vue";
 
 export default {
     components: {
@@ -13,6 +14,7 @@ export default {
         JetButton,
         JetInput,
         JetLabel,
+        SecondaryHeadingVue,
     },
     setup() {
         const form = useForm({
@@ -29,8 +31,15 @@ export default {
 <template>
     <Head title="Create room" />
     <AppLayout>
-        <h2>Create rooms</h2>
-        <form @submit.prevent="form.post(route('rooms.store'))">
+        <template #header>
+            <h2 class="text-xl font-semibold leading-tight text-gray-800">
+                Create room
+            </h2>
+        </template>
+        <form
+            @submit.prevent="form.post(route('rooms.store'))"
+            class="flex flex-col gap-4"
+        >
             <div>
                 <JetLabel for="name" value="Room name:" />
                 <JetInput v-model="form.name" type="text" id="name" />

@@ -86,8 +86,17 @@ export default {
     <AppLayout>
         <Head title="New Plant" />
         <template #header>
-            <h2 class="text-xl font-semibold leading-tight text-gray-800">
+            <h2
+                v-if="$page.url === '/plants/create'"
+                class="text-xl font-semibold leading-tight text-gray-800"
+            >
                 My plants
+            </h2>
+            <h2
+                v-else-if="$page.url.startsWith('/plants/')"
+                class="text-xl font-semibold leading-tight text-gray-800"
+            >
+                Edit plants
             </h2>
         </template>
         <form @submit.prevent class="flex flex-col gap-4 p-4">
