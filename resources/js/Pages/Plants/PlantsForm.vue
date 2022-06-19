@@ -33,13 +33,13 @@ export default {
                 plantPropExists && props.plant.sun !== undefined
                     ? props.plant.sun
                     : "",
+            image: null,
         });
 
         function createPlant() {
             Inertia.post(route("plants.store"), form);
         }
         function updatePlant() {
-            console.log("update");
             Inertia.put(route("plants.update", props.plant.id), form);
         }
         function deletePlant() {
@@ -109,7 +109,7 @@ export default {
                 />
             </div>
             <div class="flex flex-col">
-                <JetLabel for="description" value="Plant Description:" />
+                <JetLabel for="description" value="How much water:" />
                 <select
                     class="rounded-md border-gray-300 shadow-sm focus:ring focus:ring-plantDiary-100 focus:ring-opacity-50"
                     v-model="form.waterCount"
