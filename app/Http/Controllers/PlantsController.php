@@ -56,12 +56,26 @@ class PlantsController extends Controller
 
     public static function handleImageUpload(Request $request)
     {
+        $request->validate([
+            'image' => ['image', 'mimes:jpeg,jpg,png', 'max:10240']
+        ]);
         if ($request->hasFile('image')) {
             PlantImage::create([
                 'image_path' => $request->file('image')->store('plantsImage', 'public'),
                 'plant_id' => Plant::latest('id')->value('id')
             ]);
         }
+    }
+
+    public static function handleValidation(Request $request)
+    {
+        $request->validate([
+            'plantName' => ['required', 'min:3', 'max:100', 'string'],
+            'description' => ['max:255'],
+            'daysToWater' => ['integer'],
+            'waterCount' => ['integer', 'digits_between:0,3'],
+            'sun' => ['digits_between:0,3'],
+        ]);
     }
 
     /**
@@ -72,6 +86,7 @@ class PlantsController extends Controller
      */
     public function store(Request $request)
     {
+        PlantsController::handleValidation($request);
         Plant::create([
             'name' => $request->plantName,
             'description' => $request->description,
@@ -127,6 +142,8 @@ class PlantsController extends Controller
         $userId = auth()->user()->id;
         $plant = Plant::findOrFail($id);
         if ($plant->user_id !== $userId) abort(403);
+
+        PlantsController::handleValidation($request);
 
         $plant->update([
             'name' => $request->plantName,

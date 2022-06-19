@@ -21,6 +21,9 @@ export default {
 
         return { form };
     },
+    props: {
+        errors: Object,
+    },
 };
 </script>
 <template>
@@ -28,8 +31,13 @@ export default {
     <AppLayout>
         <h2>Create rooms</h2>
         <form @submit.prevent="form.post(route('rooms.store'))">
-            <JetLabel for="name" value="Room name:" />
-            <JetInput v-model="form.name" type="text" id="name" />
+            <div>
+                <JetLabel for="name" value="Room name:" />
+                <JetInput v-model="form.name" type="text" id="name" />
+                <p class="text-red-700" v-if="errors.name">
+                    {{ errors.name }}
+                </p>
+            </div>
             <JetButton>Create</JetButton>
         </form>
     </AppLayout>

@@ -33,6 +33,13 @@ class RoomsController extends Controller
         return Inertia::render('Rooms/Create');
     }
 
+    public static function handleValidation(Request $request)
+    {
+        $request->validate([
+            'name' => ['required', 'min:2', 'max:50', 'string']
+        ]);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -41,6 +48,7 @@ class RoomsController extends Controller
      */
     public function store(Request $request)
     {
+        RoomsController::handleValidation($request);
         Room::create([
             'name' => $request->name,
             'user_id' => auth()->user()->id
@@ -82,6 +90,7 @@ class RoomsController extends Controller
      */
     public function update(Request $request, $id)
     {
+        RoomsController::handleValidation($request);
         $room = Room::findOrFail($id);
         $room->update([
             'name' => $request->name,

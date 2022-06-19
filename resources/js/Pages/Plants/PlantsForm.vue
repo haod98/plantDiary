@@ -75,6 +75,9 @@ export default {
         images: {
             type: Object,
         },
+        errors: {
+            type: Object,
+        },
     },
     components: { AppLayout, Head, JetButton, JetInput, JetLabel },
 };
@@ -91,6 +94,9 @@ export default {
             <div class="flex flex-col">
                 <JetLabel for="plantName" value="Plant Name:" />
                 <JetInput id="plantName" v-model="form.plantName" type="text" />
+                <p class="text-red-700" v-if="errors.plantName">
+                    {{ errors.plantName }}
+                </p>
             </div>
             <div class="flex flex-col">
                 <JetLabel for="description" value="Plant Description:" />
@@ -102,6 +108,9 @@ export default {
                     v-model="form.description"
                     class="rounded-md border-gray-300 shadow-sm focus:ring focus:ring-plantDiary-100 focus:ring-opacity-50"
                 ></textarea>
+                <p class="text-red-700" v-if="errors.description">
+                    {{ errors.description }}
+                </p>
             </div>
             <div class="flex flex-col">
                 <JetLabel for="days-to-water" value="Days to water" />
@@ -112,18 +121,21 @@ export default {
                 />
             </div>
             <div class="flex flex-col">
-                <JetLabel for="description" value="How much water:" />
+                <JetLabel for="water_count" value="How much water:" />
                 <select
                     class="rounded-md border-gray-300 shadow-sm focus:ring focus:ring-plantDiary-100 focus:ring-opacity-50"
                     v-model="form.waterCount"
-                    name="water-count"
-                    id="water-count"
+                    name="water_count"
+                    id="water_count"
                 >
                     <option value="0" selected>None</option>
                     <option value="1">Low</option>
                     <option value="2">Medium</option>
                     <option value="3">High</option>
                 </select>
+                <p class="text-red-700" v-if="errors.water_count">
+                    {{ errors.water_count }}
+                </p>
             </div>
             <div class="flex flex-col">
                 <JetLabel for="sun" value="How much sun" />
@@ -138,14 +150,15 @@ export default {
                     <option value="2">Half-shadow</option>
                     <option value="3">Sun</option>
                 </select>
+                <p class="text-red-700" v-if="errors.sun">{{ errors.sun }}</p>
             </div>
             <div class="flex flex-col" v-if="roomsExists">
-                <JetLabel for="room-id" value="Which room" />
+                <JetLabel for="room_id" value="Which room" />
                 <select
                     class="rounded-md border-gray-300 shadow-sm focus:ring focus:ring-plantDiary-100 focus:ring-opacity-50"
                     v-model="form.roomId"
-                    name="room-id"
-                    id="room-id"
+                    name="room_id"
+                    id="room_id"
                 >
                     <option
                         v-for="room in rooms"
@@ -164,6 +177,9 @@ export default {
                     name="images"
                     @input="form.image = $event.target.files[0]"
                 />
+                <p class="text-red-700" v-if="errors.image">
+                    {{ errors.image }}
+                </p>
             </div>
             <div v-if="imagesExists">
                 <div v-for="image in images" :key="image.id">
