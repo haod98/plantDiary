@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string("image_path");
-            $table->foreignId('plant_id')->constrained();
+            $table->foreignId('plant_id')->constrained()->onDelete('cascade');
         });
     }
 
