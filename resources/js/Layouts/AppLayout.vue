@@ -501,17 +501,41 @@ const logout = () => {
                 <slot />
                 <nav ref="navbar" class="navbar-bottom fixed bottom-0 w-full">
                     <ul class="flex justify-around bg-black py-6 text-white">
-                        <Link :href="route('dashboard')">
+                        <Link
+                            :href="route('dashboard')"
+                            :class="{
+                                'text-plantDiary-100':
+                                    $page.url.startsWith('/dashboard'),
+                            }"
+                        >
                             <li>My plants</li>
                         </Link>
-                        <Link :href="route('rooms.index')">
+                        <Link
+                            :href="route('rooms.index')"
+                            :class="{
+                                'text-plantDiary-100':
+                                    $page.url.startsWith('/rooms'),
+                            }"
+                        >
                             <li>My rooms</li>
                         </Link>
-                        <Link :href="route('plants.create')">
+                        <Link
+                            :href="route('plants.create')"
+                            :class="{
+                                'text-plantDiary-100':
+                                    $page.url === '/plants/create',
+                            }"
+                        >
                             <li>Add</li>
                         </Link>
                         <li>Local shops</li>
-                        <Link :href="route('profile.show')">
+                        <Link
+                            :href="route('profile.show')"
+                            :class="{
+                                'text-plantDiary-100':
+                                    $page.url.startsWith('/user/profile'),
+                            }"
+                        >
                             <li>Profile</li>
                         </Link>
                     </ul>
