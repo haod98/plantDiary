@@ -19,6 +19,10 @@ class DashboardController extends Controller
             ->rightJoin('plants', 'plant_images.plant_id', '=', 'plants.id')
             ->where('user_id', '=', $userId)
             ->get();
+        // $image = $plants->map(function ($plant) {
+        //     return $plant->plantImages;
+        // });
+        // dd($image);
         return Inertia::render('Dashboard', compact('plants'));
     }
 }
