@@ -33,7 +33,6 @@ export default {
                 plantPropExists && props.plant.sun !== undefined
                     ? props.plant.sun
                     : "",
-            image: null,
         });
 
         function createPlant() {
@@ -47,7 +46,8 @@ export default {
             Inertia.delete(route("plants.destroy", props.plant.id), form);
         }
         const roomsExists = props.rooms.length !== 0;
-        const imagesExists = props.images.length !== 0;
+        const imagesExists =
+            props.images !== undefined && props.images.length !== 0;
 
         return {
             form,
