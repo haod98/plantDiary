@@ -5,6 +5,8 @@ import AppLayout from "../../Layouts/AppLayout.vue";
 import JetButton from "../../Jetstream/Button.vue";
 import JetInput from "../../Jetstream/Input.vue";
 import JetLabel from "../../Jetstream/Label.vue";
+import { loadImage, formatDate } from "@/helpers.js";
+import { format } from "date-fns";
 
 export default {
     setup(props) {
@@ -45,10 +47,16 @@ export default {
             Inertia.delete(route("plants.destroy", props.plant.id), form);
         }
         const roomsExists = props.rooms.length !== 0;
+        const imagesExists = props.images.length !== 0;
+
         return {
             form,
             plantPropExists,
             roomsExists,
+            imagesExists,
+            loadImage,
+            formatDate,
+            format,
             createPlant,
             updatePlant,
             deletePlant,
@@ -60,7 +68,9 @@ export default {
         },
         rooms: {
             type: Object,
-            default: undefined,
+        },
+        images: {
+            type: Object,
         },
     },
     components: { AppLayout, Head, JetButton, JetInput, JetLabel },
@@ -151,6 +161,16 @@ export default {
                     name="images"
                     @input="form.image = $event.target.files[0]"
                 />
+            </div>
+            <div v-if="imagesExists">
+                <div v-for="image in images" :key="image.id">
+                    <img
+                        :src="loadImage(image.image_path)"
+                        alt=""
+                        class="h-32"
+                    />
+                    <p>Picture taken: {{ formatDate(image.created_at) }}</p>
+                </div>
             </div>
             <progress
                 v-if="form.progress"

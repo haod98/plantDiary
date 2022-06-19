@@ -102,9 +102,12 @@ class PlantsController extends Controller
         $userId = auth()->user()->id;
         $plant = Plant::findOrFail($id);
         $rooms = User::findOrFail($userId)->rooms;
+        $images = DB::table('plant_images')
+            ->where('plant_id', '=', $plant->id)
+            ->get();
         if ($plant->user_id !== $userId) abort(403);
 
-        return Inertia::render('Plants/PlantsForm', compact('plant', 'rooms'));
+        return Inertia::render('Plants/PlantsForm', compact('plant', 'rooms', 'images'));
     }
 
     /**
