@@ -44,7 +44,15 @@ export default {
         function deletePlant() {
             Inertia.delete(route("plants.destroy", props.plant.id), form);
         }
-        return { form, plantPropExists, createPlant, updatePlant, deletePlant };
+        const roomsExists = props.rooms.length !== 0;
+        return {
+            form,
+            plantPropExists,
+            roomsExists,
+            createPlant,
+            updatePlant,
+            deletePlant,
+        };
     },
     props: {
         plant: {
@@ -52,6 +60,7 @@ export default {
         },
         rooms: {
             type: Object,
+            default: undefined,
         },
     },
     components: { AppLayout, Head, JetButton, JetInput, JetLabel },
@@ -117,7 +126,7 @@ export default {
                     <option value="3">Sun</option>
                 </select>
             </div>
-            <div class="flex flex-col">
+            <div class="flex flex-col" v-if="roomsExists">
                 <JetLabel for="room-id" value="Which room" />
                 <select
                     class="rounded-md border-gray-300 shadow-sm focus:ring focus:ring-plantDiary-100 focus:ring-opacity-50"
