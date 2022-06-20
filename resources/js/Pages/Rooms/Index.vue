@@ -57,7 +57,7 @@ export default {
                         </Link>
                         <Link
                             :href="route('rooms.edit', room.id)"
-                            class="col-start-5 flex inline-flex items-center justify-center rounded-md border border-transparent bg-gray-300 px-4 py-2 text-xs font-semibold uppercase tracking-widest text-white transition hover:bg-gray-500 focus:border-gray-900 focus:outline-none focus:ring focus:ring-gray-300 active:bg-plantDiary-150 disabled:opacity-25 md:col-start-7"
+                            class="col-start-5 inline-flex items-center justify-center rounded-md border border-transparent bg-gray-300 px-4 py-2 text-xs font-semibold uppercase tracking-widest text-white transition hover:bg-gray-500 focus:border-gray-900 focus:outline-none focus:ring focus:ring-gray-300 active:bg-gray-500 disabled:opacity-25 md:col-start-7"
                             >Edit</Link
                         >
                     </div>
