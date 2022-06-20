@@ -90,13 +90,13 @@ export default {
                 v-if="$page.url === '/plants/create'"
                 class="text-xl font-semibold leading-tight text-gray-800"
             >
-                My plants
+                Create plant
             </h2>
             <h2
                 v-else-if="$page.url.startsWith('/plants/')"
                 class="text-xl font-semibold leading-tight text-gray-800"
             >
-                Edit plants
+                Edit {{ plant.name }}
             </h2>
         </template>
         <form @submit.prevent class="flex flex-col gap-4 p-4">

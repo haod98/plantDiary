@@ -30,6 +30,11 @@ export default {
 <template>
     <Head :title="room.name" />
     <AppLayout>
+        <template #header>
+            <h2 class="text-xl font-semibold leading-tight text-gray-800">
+                {{ room.name }}
+            </h2>
+        </template>
         <h1>{{ room.name }}</h1>
         <p v-if="plants.length === 0">No Rooms</p>
         <div v-for="plant in plants" :key="plant.id">

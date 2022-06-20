@@ -32,7 +32,11 @@ export default {
 <template>
     <Head title="Create room" />
     <AppLayout>
-        <h2>Create rooms</h2>
+        <template #header>
+            <h2 class="text-xl font-semibold leading-tight text-gray-800">
+                Create room
+            </h2>
+        </template>
         <form @submit.prevent>
             <div>
                 <label for="name">Room name:</label>
