@@ -56,10 +56,10 @@ class PlantsController extends Controller
 
     public static function handleImageUpload(Request $request)
     {
-        $request->validate([
-            'image' => ['image', 'mimes:jpeg,jpg,png', 'max:10240']
-        ]);
         if ($request->hasFile('image')) {
+            $request->validate([
+                'image' => ['image', 'mimes:jpeg,jpg,png', 'max:10240']
+            ]);
             PlantImage::create([
                 'image_path' => $request->file('image')->store('plantsImage', 'public'),
                 'plant_id' => Plant::latest('id')->value('id')
