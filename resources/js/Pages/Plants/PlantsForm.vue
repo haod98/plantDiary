@@ -7,6 +7,8 @@ import JetInput from "../../Jetstream/Input.vue";
 import JetLabel from "../../Jetstream/Label.vue";
 import { loadImage, formatDate } from "@/helpers.js";
 import { format } from "date-fns";
+import { ref } from "vue";
+import JetDialogModal from "@/Jetstream/DialogModal.vue";
 
 export default {
     setup(props) {
@@ -52,6 +54,16 @@ export default {
         const imagesExists =
             props.images !== undefined && props.images.length !== 0;
 
+        const confirmDeletion = () => {
+            confirmingDeletion.value = true;
+        };
+
+        const closeModal = () => {
+            confirmingDeletion.value = false;
+        };
+
+        const confirmingDeletion = ref(false);
+
         return {
             form,
             plantPropExists,
@@ -59,10 +71,13 @@ export default {
             imagesExists,
             loadImage,
             formatDate,
+            confirmingDeletion,
             format,
             createPlant,
             updatePlant,
             deletePlant,
+            confirmDeletion,
+            closeModal,
         };
     },
     props: {
@@ -79,7 +94,14 @@ export default {
             type: Object,
         },
     },
-    components: { AppLayout, Head, JetButton, JetInput, JetLabel },
+    components: {
+        AppLayout,
+        Head,
+        JetButton,
+        JetInput,
+        JetLabel,
+        JetDialogModal,
+    },
 };
 </script>
 <template>
@@ -207,6 +229,28 @@ export default {
             >
                 {{ form.progress.percentage }}%
             </progress>
+            <JetDialogModal :show="confirmingDeletion" @close="closeModal">
+                <template #title> Delete {{ plant.name }} </template>
+
+                <template #content>
+                    Are you sure you want to delete your plant:
+                    <strong>{{ plant.name }} </strong>?
+                </template>
+
+                <template #footer>
+                    <JetButton @click="closeModal"> Cancel </JetButton>
+
+                    <JetButton
+                        class="ml-3"
+                        :class="{ 'opacity-25': form.processing }"
+                        button-style-type="danger"
+                        :disabled="form.processing"
+                        @click="deletePlant"
+                    >
+                        Delete plant
+                    </JetButton>
+                </template>
+            </JetDialogModal>
             <JetButton v-if="plant === undefined" @click="createPlant">
                 Create
             </JetButton>
@@ -221,7 +265,7 @@ export default {
                 button-style-type="danger"
                 v-if="plant !== undefined"
                 type="submit"
-                @click="deletePlant"
+                @click="confirmDeletion"
             >
                 Delete
             </JetButton>
