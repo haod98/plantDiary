@@ -25,7 +25,13 @@ export default {
                 My plants
             </h2>
         </template>
-
+        <div v-if="$page.props.flash.success" class="bg-plantDiary-150">
+            <p
+                class="mx-auto max-w-7xl py-6 px-4 font-semibold text-white sm:px-6 lg:px-8"
+            >
+                {{ $page.props.flash.success }}
+            </p>
+        </div>
         <div class="py-12">
             <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
                 <div class="overflow-hidden bg-white shadow-xl sm:rounded-lg">

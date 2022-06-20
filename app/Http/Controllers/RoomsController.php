@@ -49,11 +49,13 @@ class RoomsController extends Controller
     public function store(Request $request)
     {
         RoomsController::handleValidation($request);
-        Room::create([
+        $room = Room::create([
             'name' => $request->name,
             'user_id' => auth()->user()->id
         ]);
-        return redirect(route("rooms.index"));
+        $roomName = $room->name;
+        return redirect(route("rooms.index"))
+            ->with("success", "Plant ($roomName) was successfully created");
     }
 
     /**
@@ -95,7 +97,9 @@ class RoomsController extends Controller
         $room->update([
             'name' => $request->name,
         ]);
-        return redirect('/rooms');
+        $roomName = $room->name;
+        return redirect('/rooms')
+            ->with("success", "Plant ($roomName) was successfully edited");
     }
 
     /**
@@ -107,7 +111,10 @@ class RoomsController extends Controller
     public function destroy($id)
     {
         DB::table('plants')->where('room_id', $id)->update(['room_id' => null]);
-        Room::findOrFail($id)->delete();
-        return redirect("/rooms");
+        $room = Room::findOrFail($id);
+        $roomName = $room->name;
+        $room->delete();
+        return redirect("/rooms")
+            ->with("success", "Plant ($roomName) was successfully deleted");
     }
 }

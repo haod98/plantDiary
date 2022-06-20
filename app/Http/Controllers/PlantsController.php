@@ -87,7 +87,7 @@ class PlantsController extends Controller
     public function store(Request $request)
     {
         PlantsController::handleValidation($request);
-        Plant::create([
+        $plant = Plant::create([
             'name' => $request->plantName,
             'description' => $request->description,
             'days_to_water' => $request->daysToWater,
@@ -97,8 +97,11 @@ class PlantsController extends Controller
             'room_id' => $request->roomId,
         ]);
 
+        $plantName = $plant->name;
+
         PlantsController::handleImageUpload($request);
-        return redirect("dashboard");
+        return redirect("dashboard")
+            ->with("success", "Plant ($plantName) was successfully created");
     }
 
     /**
@@ -153,8 +156,10 @@ class PlantsController extends Controller
             'sun' => $request->sun,
             'room_id' => $request->roomId,
         ]);
+        $plantName = $plant->name;
         PlantsController::handleImageUpload($request);
-        return redirect('/dashboard');
+        return redirect('/dashboard')
+            ->with("success", "Plant ($plantName) was successfully edited");
     }
 
     /**
@@ -166,7 +171,9 @@ class PlantsController extends Controller
     public function destroy($id)
     {
         $plant = Plant::findOrFail($id);
+        $plantName = $plant->name;
         $plant->delete();
-        return redirect("/dashboard");
+        return redirect("/dashboard")
+            ->with("success", "Plant ($plantName) was successfully deleted");
     }
 }
