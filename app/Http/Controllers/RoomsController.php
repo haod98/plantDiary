@@ -55,7 +55,7 @@ class RoomsController extends Controller
         ]);
         $roomName = $room->name;
         return redirect(route("rooms.index"))
-            ->with("success", "Plant ($roomName) was successfully created");
+            ->with("success", "Room ($roomName) was successfully created");
     }
 
     /**
@@ -99,7 +99,7 @@ class RoomsController extends Controller
         ]);
         $roomName = $room->name;
         return redirect('/rooms')
-            ->with("success", "Plant ($roomName) was successfully edited");
+            ->with("success", "Room ($roomName) was successfully edited");
     }
 
     /**
@@ -115,6 +115,6 @@ class RoomsController extends Controller
         $roomName = $room->name;
         $room->delete();
         return redirect("/rooms")
-            ->with("success", "Plant ($roomName) was successfully deleted");
+            ->with("success", "Room ($roomName) was successfully deleted");
     }
 }
