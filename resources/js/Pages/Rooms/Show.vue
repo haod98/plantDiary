@@ -36,7 +36,7 @@ export default {
             </h2>
         </template>
         <h1>{{ room.name }}</h1>
-        <p v-if="plants.length === 0">No Rooms</p>
+        <p v-if="plants.length === 0">No plants</p>
         <div v-for="plant in plants" :key="plant.id">
             <p>Plant Name: {{ plant.name }}</p>
             <p>Plant Description: {{ plant.description }}</p>
@@ -48,6 +48,5 @@ export default {
             <Link :href="route('plants.edit', plant.id)">Edit</Link>
             <br />
         </div>
-        <!-- <p>{{ plants }}</p> -->
     </AppLayout>
 </template>
