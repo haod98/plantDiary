@@ -6,7 +6,6 @@ import JetButton from "../../Jetstream/Button.vue";
 import JetInput from "../../Jetstream/Input.vue";
 import JetLabel from "../../Jetstream/Label.vue";
 import { ref } from "vue";
-import JetActionSection from "@/Jetstream/ActionSection.vue";
 import JetDialogModal from "@/Jetstream/DialogModal.vue";
 
 export default {
@@ -17,7 +16,6 @@ export default {
         JetButton,
         JetInput,
         JetLabel,
-        JetActionSection,
         JetDialogModal,
         ref,
     },
