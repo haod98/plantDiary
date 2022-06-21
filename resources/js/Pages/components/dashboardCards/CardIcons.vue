@@ -61,6 +61,7 @@ export default defineComponent({
     mounted() {
         this.openWaterPopUp ? (this.showWaterPopUp = true) : "";
         this.openSunPopUp ? (this.showSunPopUp = true) : "";
+        console.log(this.daysToWater);
     },
     components: { WaterPopUp, SunPopUp },
 });
@@ -106,7 +107,7 @@ export default defineComponent({
             alt="A sun icon"
             class="absolute left-2/4 h-8 -translate-x-2/4 cursor-pointer"
         />
-        <div class="w-24">
+        <div v-if="daysToWater !== null" class="w-24">
             <div class="relative">
                 <p class="text-md w-[100%] px-2 py-1 text-white">
                     {{ daysToWater }} days

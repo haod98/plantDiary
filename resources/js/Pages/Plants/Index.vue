@@ -35,7 +35,7 @@ export default {
             return image.length > 0 ? image[0].image_path : undefined;
         },
         calculateRemainingDays(nextTimeToWater) {
-            if (nextTimeToWater === null) return;
+            if (nextTimeToWater === null) return null;
             return differenceInDays(new Date(nextTimeToWater), new Date());
         },
     },
