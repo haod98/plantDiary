@@ -14,15 +14,20 @@ class DashboardController extends Controller
     public function index()
     {
         $userId = auth()->user()->id;
-        $plants = User::find($userId)->plants;
-        $plants = DB::table('plant_images')
-            ->rightJoin('plants', 'plant_images.plant_id', '=', 'plants.id')
-            ->where('user_id', '=', $userId)
+        $plants = User::find($userId)
+            ->plants()
+            ->with('plantImages')
             ->get();
+        // $plants = DB::table('plants')
+        //     // ->rightJoin('plants', 'plant_images.plant_id', '=', 'plants.id')
+        //     ->where('user_id', '=', $userId)
+        //     ->leftJoin('plant_images', 'plants.id', '=', 'plant_images.plant_id')
+        //     ->get();
+        // $Plants = Plant
         // $image = $plants->map(function ($plant) {
-        //     return $plant->plantImages;
+        //     return $plant->plantImage;
         // });
-        // dd($image);
+        // dd($plants->toArray());
         return Inertia::render('Dashboard', compact('plants'));
     }
 }
