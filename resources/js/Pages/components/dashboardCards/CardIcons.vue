@@ -50,6 +50,9 @@ export default defineComponent({
                     return this.noSun;
             }
         },
+        getPercentageOfRemainingDays(defaultDays, remainingDays) {
+            return Math.ceil((remainingDays / defaultDays) * 100);
+        },
     },
     props: {
         openWaterPopUp: Boolean,
@@ -57,6 +60,7 @@ export default defineComponent({
         waterCount: Number,
         sunLevel: Number,
         daysToWater: Number,
+        defaultDays: Number | null,
     },
     mounted() {
         this.openWaterPopUp ? (this.showWaterPopUp = true) : "";
@@ -109,11 +113,22 @@ export default defineComponent({
         />
         <div v-if="daysToWater !== null" class="w-24">
             <div class="relative">
-                <p class="text-md w-[100%] px-2 py-1 text-white">
+                <p
+                    v-if="daysToWater === 0"
+                    class="text-md w-[100%] px-2 py-1 text-white"
+                >
+                    Today
+                </p>
+                <p v-else class="text-md w-[100%] px-2 py-1 text-white">
                     {{ daysToWater }} days
                 </p>
                 <div
-                    class="absolute top-0 -z-10 h-full w-1/4 rounded-lg bg-sky-400"
+                    :style="
+                        'width:' +
+                        getPercentageOfRemainingDays(defaultDays, daysToWater) +
+                        '%'
+                    "
+                    class="absolute top-0 -z-10 h-full rounded-lg bg-sky-400"
                 ></div>
                 <div
                     class="absolute top-0 -z-20 h-full w-full rounded-lg bg-gray-300"

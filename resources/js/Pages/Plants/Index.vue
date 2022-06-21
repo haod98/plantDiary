@@ -7,6 +7,7 @@
             :waterCount="plant.water_count"
             :sun="plant.sun"
             :plantImg="getFirstPlantImage(plant.plant_images)"
+            :defaultDays="plant.days_to_water"
         />
         <Link :href="route('plants.edit', plant.id)">
             <JetButton buttonStyleType="edit"> Edit</JetButton>
@@ -36,7 +37,7 @@ export default {
         },
         calculateRemainingDays(nextTimeToWater) {
             if (nextTimeToWater === null) return null;
-            return differenceInDays(new Date(nextTimeToWater), new Date());
+            return differenceInDays(new Date(nextTimeToWater), new Date()) + 1; // +1 so it also includes todays day.
         },
     },
 };
