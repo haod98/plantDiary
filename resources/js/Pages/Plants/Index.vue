@@ -3,7 +3,7 @@
         <PlantDashboard
             :title="plant.name"
             :description="plant.description"
-            :daysToWater="plant.days_to_water"
+            :daysToWater="calculateRemainingDays(plant.next_water)"
             :waterCount="plant.water_count"
             :sun="plant.sun"
             :plantImg="getFirstPlantImage(plant.plant_images)"
@@ -18,6 +18,7 @@
 import { Link } from "@inertiajs/inertia-vue3";
 import PlantDashboard from "../components/dashboardCards/PlantDashboard.vue";
 import JetButton from "../../Jetstream/Button.vue";
+import { differenceInDays } from "date-fns";
 export default {
     props: {
         plants: {
@@ -32,6 +33,10 @@ export default {
     methods: {
         getFirstPlantImage(image) {
             return image.length > 0 ? image[0].image_path : undefined;
+        },
+        calculateRemainingDays(nextTimeToWater) {
+            if (nextTimeToWater === null) return;
+            return differenceInDays(new Date(nextTimeToWater), new Date());
         },
     },
 };
