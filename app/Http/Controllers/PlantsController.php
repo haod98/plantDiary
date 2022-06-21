@@ -71,10 +71,10 @@ class PlantsController extends Controller
     {
         $request->validate([
             'plantName' => ['required', 'min:3', 'max:100', 'string'],
-            'description' => ['max:255'],
-            'daysToWater' => ['integer'],
-            'waterCount' => ['integer', 'digits_between:0,3'],
-            'sun' => ['digits_between:0,3'],
+            'description' => ['max:255', 'nullable'],
+            'daysToWater' => ['integer', 'nullable'],
+            'waterCount' => ['integer', 'digits_between:0,3', 'nullable'],
+            'sun' => ['digits_between:0,3', 'nullable'],
         ]);
     }
 
@@ -87,7 +87,6 @@ class PlantsController extends Controller
     public function store(Request $request)
     {
         PlantsController::handleValidation($request);
-        // dd($request->all());
         $plant = Plant::create([
             'name' => $request->plantName,
             'description' => $request->description,
