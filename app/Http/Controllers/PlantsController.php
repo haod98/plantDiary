@@ -95,7 +95,7 @@ class PlantsController extends Controller
             'sun' => $request->sun,
             'user_id' => auth()->user()->id,
             'room_id' => $request->roomId,
-            'next_water' => Carbon::now()->addDays($request->daysToWater)
+            'next_water' => $request->daysToWater ? Carbon::now()->addDays($request->daysToWater) : null
         ]);
 
         $plantName = $plant->name;
