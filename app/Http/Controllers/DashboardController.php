@@ -18,16 +18,6 @@ class DashboardController extends Controller
             ->plants()
             ->with('plantImages')
             ->get();
-        // $plants = DB::table('plants')
-        //     // ->rightJoin('plants', 'plant_images.plant_id', '=', 'plants.id')
-        //     ->where('user_id', '=', $userId)
-        //     ->leftJoin('plant_images', 'plants.id', '=', 'plant_images.plant_id')
-        //     ->get();
-        // $Plants = Plant
-        // $image = $plants->map(function ($plant) {
-        //     return $plant->plantImage;
-        // });
-        // dd($plants->toArray());
         return Inertia::render('Dashboard', compact('plants'));
     }
 }
