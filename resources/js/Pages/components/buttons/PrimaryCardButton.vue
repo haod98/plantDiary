@@ -13,7 +13,7 @@ export default defineComponent({
 
 <template>
     <button
-        class="bg-plantDiary-50 hover:bg-plantDiary-100 flex flex-grow justify-center rounded-2xl px-4 py-3 font-semibold uppercase tracking-wider text-white transition duration-300 hover:ease-in-out"
+        class="flex w-full flex-grow justify-center rounded-2xl bg-plantDiary-50 px-4 py-3 font-semibold uppercase tracking-wider text-white transition duration-300 hover:bg-plantDiary-100 hover:ease-in-out"
     >
         {{ buttonTitle }}
     </button>

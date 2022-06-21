@@ -17,6 +17,7 @@ export default defineComponent({
         sun: Number,
         openWaterPopUp: Boolean,
         openSunPopUp: Boolean,
+        plantId: Number,
         defaultDays: Number | null,
         isCollapsed: {
             type: Boolean,
@@ -71,10 +72,12 @@ export default defineComponent({
                 :defaultDays="defaultDays"
             />
             <CardContent
+                :defaultDays="defaultDays"
                 :plantName="title"
                 :plantDescription="description"
                 :_isCollapsed="isCollapsed"
                 :hideDropDown="hideDropDown"
+                :plantId="plantId"
                 @collapseCard="collapseCard"
             />
         </div>

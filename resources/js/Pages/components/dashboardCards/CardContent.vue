@@ -2,6 +2,7 @@
 import { defineComponent } from "vue";
 import PrimaryCardButton from "../buttons/PrimaryCardButton.vue";
 import SecondaryCardButton from "../buttons/SecondaryCardButton.vue";
+import { Inertia } from "@inertiajs/inertia";
 
 export default defineComponent({
     props: {
@@ -15,17 +16,26 @@ export default defineComponent({
             type: Boolean,
             default: false,
         },
+        plantId: Number,
     },
     components: { PrimaryCardButton, SecondaryCardButton },
     data() {
         return {
             isCollapsed: this._isCollapsed,
+            form: {
+                id: this.plantId ?? null,
+            },
         };
     },
     methods: {
         collapseCard() {
             this.isCollapsed = !this.isCollapsed;
             this.$emit("collapseCard", this.isCollapsed);
+        },
+        castWater() {
+            Inertia.put(route("plants.castWater"), this.form, {
+                preserveScroll: true,
+            });
         },
     },
     emits: ["collapseCard"],
@@ -42,7 +52,9 @@ export default defineComponent({
         {{ plantDescription }}
     </p>
     <div class="flex justify-between gap-3">
-        <PrimaryCardButton></PrimaryCardButton>
+        <form @submit.prevent class="w-full">
+            <PrimaryCardButton @click="castWater"></PrimaryCardButton>
+        </form>
         <SecondaryCardButton></SecondaryCardButton>
     </div>
     <div class="mt-4 flex cursor-pointer justify-center">

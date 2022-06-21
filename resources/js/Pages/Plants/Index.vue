@@ -8,6 +8,7 @@
             :sun="plant.sun"
             :plantImg="getFirstPlantImage(plant.plant_images)"
             :defaultDays="plant.days_to_water"
+            :plantId="plant.id"
         />
         <Link :href="route('plants.edit', plant.id)">
             <JetButton buttonStyleType="edit"> Edit</JetButton>

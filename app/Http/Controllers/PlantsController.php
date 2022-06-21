@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
+use SebastianBergmann\GlobalState\Restorer;
 use Symfony\Component\VarDumper\VarDumper;
 
 class PlantsController extends Controller
@@ -75,6 +76,17 @@ class PlantsController extends Controller
             'daysToWater' => ['integer', 'nullable'],
             'waterCount' => ['integer', 'digits_between:0,3', 'nullable'],
             'sun' => ['digits_between:0,3', 'nullable'],
+        ]);
+    }
+
+    public function castWater(Request $request)
+    {
+        $id = $request->id;
+        $plant = Plant::findOrFail($id);
+        $daysToAdd = $plant->days_to_water;
+        $nextTimeToWater = Carbon::now()->addDays($daysToAdd);
+        $plant->update([
+            'next_water' => $nextTimeToWater
         ]);
     }
 
