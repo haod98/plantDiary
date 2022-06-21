@@ -6,7 +6,7 @@
             :daysToWater="plant.days_to_water"
             :waterCount="plant.water_count"
             :sun="plant.sun"
-            :plantImg="plant.image_path"
+            :plantImg="plant.plant_images[0].image_path"
         />
         <Link :href="route('plants.edit', plant.id)">
             <JetButton buttonStyleType="edit"> Edit</JetButton>
