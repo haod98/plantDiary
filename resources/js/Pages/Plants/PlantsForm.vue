@@ -212,8 +212,12 @@ export default {
                     {{ errors.image }}
                 </p>
             </div>
-            <div v-if="imagesExists">
-                <div v-for="image in images" :key="image.id">
+            <div v-if="imagesExists" class="flex gap-3">
+                <div
+                    v-for="image in images"
+                    :key="image.id"
+                    class="flex flex-col items-center"
+                >
                     <img
                         :src="loadImage(image.image_path)"
                         alt=""
