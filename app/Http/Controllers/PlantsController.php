@@ -156,6 +156,7 @@ class PlantsController extends Controller
             'water_count' => $request->waterCount,
             'sun' => $request->sun,
             'room_id' => $request->roomId,
+            'next_water' => $request->daysToWater ? Carbon::now()->addDays($request->daysToWater) : null
         ]);
         $plantName = $plant->name;
         PlantsController::handleImageUpload($request);
