@@ -13,7 +13,7 @@ export default defineComponent({
 
 <template>
     <button
-        class="rounded-2xl bg-gray-300 px-4 py-3 font-semibold uppercase tracking-wider text-white transition duration-300 hover:bg-gray-400 hover:ease-in-out"
+        class="w-full rounded-2xl bg-gray-300 px-4 py-3 font-semibold uppercase tracking-wider text-white transition duration-300 hover:bg-gray-400 hover:ease-in-out"
     >
         {{ buttonTitle }}
     </button>

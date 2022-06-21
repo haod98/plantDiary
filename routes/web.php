@@ -29,6 +29,7 @@ Route::get('/', function () {
 
 Route::get('/plantImages', [PlantsController::class, 'loadImage']);
 Route::put('/plants/cast-water', [PlantsController::class, 'castWater'])->name('plants.castWater');
+Route::put('/plants/snooze-water', [PlantsController::class, 'snoozeWater'])->name('plants.snoozeWater');
 Route::resource('plants', PlantsController::class);
 Route::resource('rooms', RoomsController::class);
 

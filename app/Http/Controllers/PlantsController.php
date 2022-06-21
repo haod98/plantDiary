@@ -18,7 +18,7 @@ use Symfony\Component\VarDumper\VarDumper;
 
 class PlantsController extends Controller
 {
-    const BASE_PATH_TO_PLANTS_IMG = "/storage/plantImage/";
+    const SNOOZE_DAYS = 2;
     use SoftDeletes;
     /**
      * Display a listing of the resource.
@@ -85,6 +85,16 @@ class PlantsController extends Controller
         $plant = Plant::findOrFail($id);
         $daysToAdd = $plant->days_to_water;
         $nextTimeToWater = Carbon::now()->addDays($daysToAdd);
+        $plant->update([
+            'next_water' => $nextTimeToWater
+        ]);
+    }
+
+    public function snoozeWater(Request $request)
+    {
+        $id = $request->id;
+        $plant = Plant::findOrFail($id);
+        $nextTimeToWater = Carbon::parse($plant->next_water)->addDays(self::SNOOZE_DAYS);
         $plant->update([
             'next_water' => $nextTimeToWater
         ]);

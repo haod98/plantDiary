@@ -37,6 +37,11 @@ export default defineComponent({
                 preserveScroll: true,
             });
         },
+        snoozeWater() {
+            Inertia.put(route("plants.snoozeWater"), this.form, {
+                preserveScroll: true,
+            });
+        },
     },
     emits: ["collapseCard"],
 });
@@ -55,7 +60,9 @@ export default defineComponent({
         <form @submit.prevent class="w-full">
             <PrimaryCardButton @click="castWater"></PrimaryCardButton>
         </form>
-        <SecondaryCardButton></SecondaryCardButton>
+        <form @submit.prevent class="w-full">
+            <SecondaryCardButton @click="snoozeWater"></SecondaryCardButton>
+        </form>
     </div>
     <div class="mt-4 flex cursor-pointer justify-center">
         <button

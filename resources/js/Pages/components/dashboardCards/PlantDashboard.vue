@@ -72,7 +72,6 @@ export default defineComponent({
                 :defaultDays="defaultDays"
             />
             <CardContent
-                :defaultDays="defaultDays"
                 :plantName="title"
                 :plantDescription="description"
                 :_isCollapsed="isCollapsed"
