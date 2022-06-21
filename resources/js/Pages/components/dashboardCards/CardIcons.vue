@@ -51,7 +51,8 @@ export default defineComponent({
             }
         },
         getPercentageOfRemainingDays(defaultDays, remainingDays) {
-            return Math.ceil((remainingDays / defaultDays) * 100);
+            const percentage = Math.ceil((remainingDays / defaultDays) * 100);
+            return percentage >= 100 ? 100 : percentage;
         },
     },
     props: {
