@@ -6,7 +6,7 @@
             :daysToWater="plant.days_to_water"
             :waterCount="plant.water_count"
             :sun="plant.sun"
-            :plantImg="plant.plant_images[0].image_path"
+            :plantImg="getFirstPlantImage(plant.plant_images)"
         />
         <Link :href="route('plants.edit', plant.id)">
             <JetButton buttonStyleType="edit"> Edit</JetButton>
@@ -28,6 +28,11 @@ export default {
         Link,
         PlantDashboard,
         JetButton,
+    },
+    methods: {
+        getFirstPlantImage(image) {
+            return image.length > 0 ? image[0].image_path : undefined;
+        },
     },
 };
 </script>
