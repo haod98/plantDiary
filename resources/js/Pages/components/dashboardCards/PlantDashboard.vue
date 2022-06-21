@@ -3,10 +3,12 @@ import { defineComponent } from "vue";
 import CardIcons from "../dashboardCards/CardIcons.vue";
 import CardContent from "../dashboardCards/CardContent.vue";
 import { loadImage } from "../../../helpers";
+import { Link } from "@inertiajs/inertia-vue3";
+import JetButton from "../../../Jetstream/Button.vue";
 
 const IMG_PATH = "./src/assets/img/";
 export default defineComponent({
-    components: { CardIcons, CardContent },
+    components: { JetButton, Link, CardIcons, CardContent },
     props: {
         title: String,
         description: String,
@@ -48,7 +50,7 @@ export default defineComponent({
 
 <template>
     <div
-        class="mb-3 flex justify-center"
+        class="mb-3 flex scale-90 flex-col items-center justify-center gap-3"
         :class="$attrs.class"
         data-cy="plant-card"
     >
@@ -80,5 +82,9 @@ export default defineComponent({
                 @collapseCard="collapseCard"
             />
         </div>
+
+        <Link :href="route('plants.edit', plantId)" class="">
+            <JetButton buttonStyleType="edit"> Edit</JetButton>
+        </Link>
     </div>
 </template>
