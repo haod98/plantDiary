@@ -55,7 +55,7 @@ class PlantsController extends Controller
         return Inertia::render('Plants/PlantsForm', compact('rooms'));
     }
 
-    public static function handleImageUpload(Request $request)
+    public static function handleImageUpload(Request $request, Plant $plant)
     {
         if ($request->hasFile('image')) {
             $request->validate([
@@ -63,7 +63,7 @@ class PlantsController extends Controller
             ]);
             PlantImage::create([
                 'image_path' => $request->file('image')->store('plantsImage', 'public'),
-                'plant_id' => Plant::latest('id')->value('id')
+                'plant_id' => $plant->id
             ]);
         }
     }
@@ -122,7 +122,7 @@ class PlantsController extends Controller
 
         $plantName = $plant->name;
 
-        PlantsController::handleImageUpload($request);
+        PlantsController::handleImageUpload($request, $plant);
         return redirect("dashboard")
             ->with("success", "Plant ($plantName) was successfully created");
     }
@@ -170,7 +170,6 @@ class PlantsController extends Controller
         if ($plant->user_id !== $userId) abort(403);
 
         PlantsController::handleValidation($request);
-
         $plant->update([
             'name' => $request->plantName,
             'description' => $request->description,
@@ -181,7 +180,7 @@ class PlantsController extends Controller
             'next_water' => $request->daysToWater ? Carbon::now()->addDays($request->daysToWater) : null
         ]);
         $plantName = $plant->name;
-        PlantsController::handleImageUpload($request);
+        PlantsController::handleImageUpload($request, $plant);
         return redirect('/dashboard')
             ->with("success", "Plant ($plantName) was successfully edited");
     }
