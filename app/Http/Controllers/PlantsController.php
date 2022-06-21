@@ -6,6 +6,7 @@ use App\Models\Plant;
 use App\Models\PlantImage;
 use App\Models\Room;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -86,6 +87,7 @@ class PlantsController extends Controller
     public function store(Request $request)
     {
         PlantsController::handleValidation($request);
+        // dd($request->all());
         $plant = Plant::create([
             'name' => $request->plantName,
             'description' => $request->description,
@@ -94,6 +96,7 @@ class PlantsController extends Controller
             'sun' => $request->sun,
             'user_id' => auth()->user()->id,
             'room_id' => $request->roomId,
+            'next_water' => Carbon::now()->addDays($request->daysToWater)
         ]);
 
         $plantName = $plant->name;

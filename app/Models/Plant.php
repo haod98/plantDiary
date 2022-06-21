@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Plant extends Model
 {
-    protected $fillable = ['name', 'description', 'days_to_water', 'water_count', 'sun', 'user_id', 'room_id'];
+    protected $fillable = ['name', 'description', 'days_to_water', 'water_count', 'sun', 'user_id', 'room_id', 'next_water'];
     use HasFactory;
 
     public function user()
