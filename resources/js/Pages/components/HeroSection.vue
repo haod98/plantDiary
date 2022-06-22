@@ -32,7 +32,12 @@ export default defineComponent({
             class="mb-8 lg:col-start-1 lg:col-end-4 lg:flex lg:flex-col lg:justify-center"
         >
             <StrongText title="We take care of your plants" />
-            <UnderlineButton buttonText="Learn how" />
+            <a
+                href="#simple"
+                class="block py-2 text-center text-xl uppercase text-black underline decoration-plantDiary-100 decoration-4"
+            >
+                Learn how
+            </a>
         </div>
         <div
             class="justify-center lg:col-start-4 lg:col-end-10 lg:flex lg:self-center"
@@ -48,7 +53,9 @@ export default defineComponent({
             <StrongText
                 title="Already Interested? Create an Account for free"
             />
-            <PrimaryButton class="hidden lg:block" buttonText="Sign Up" />
+            <Link :href="route('register')">
+                <PrimaryButton class="hidden lg:block" buttonText="Sign Up" />
+            </Link>
         </div>
         <div class="mx-auto text-center lg:hidden">
             <Link :href="route('register')">

@@ -15,9 +15,8 @@ export default defineComponent({
     data() {
         return {
             navItems: [
-                { id: 0, item: "About us" },
-                { id: 1, item: "Features" },
-                { id: 2, item: "Contact" },
+                { id: 0, item: "Features", href: "#simple" },
+                { id: 1, item: "About us", href: "#" },
             ],
             isNavActive: false,
             logo,
@@ -62,7 +61,7 @@ export default defineComponent({
                 </li>
                 <li v-for="navItem in navItems" :key="navItem.id">
                     <a
-                        href="#"
+                        :href="navItems.href"
                         class="text-lg font-light text-white hover:font-normal hover:underline hover:decoration-plantDiary-100"
                         >{{ navItem.item }}</a
                     >
@@ -88,7 +87,7 @@ export default defineComponent({
             </li>
             <li v-for="navItem in navItems" :key="navItem.id">
                 <a
-                    href="#"
+                    :href="navItem.href"
                     class="text-lg font-light hover:font-normal hover:underline hover:decoration-plantDiary-100"
                     >{{ navItem.item }}</a
                 >

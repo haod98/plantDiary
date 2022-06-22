@@ -49,7 +49,10 @@ export default defineComponent({
 
 <template>
     <!-- First Feature Section -->
-    <section class="mb-7 md:grid lg:grid-cols-12 lg:justify-center lg:gap-2">
+    <section
+        class="mb-7 md:grid lg:grid-cols-12 lg:justify-center lg:gap-2"
+        id="simple"
+    >
         <div
             class="lg:col-start-1 lg:col-end-7 lg:flex lg:flex-col lg:justify-center 2xl:col-start-2"
         >
