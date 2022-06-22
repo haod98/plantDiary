@@ -38,16 +38,18 @@ export default {
         </template>
         <form
             @submit.prevent="form.post(route('rooms.store'))"
-            class="flex flex-col gap-4"
+            class="flex flex-col gap-4 p-4"
         >
-            <div>
+            <div class="flex flex-col">
                 <JetLabel for="name" value="Room name:" />
                 <JetInput v-model="form.name" type="text" id="name" />
                 <p class="text-red-700" v-if="errors.name">
                     {{ errors.name }}
                 </p>
             </div>
-            <JetButton>Create</JetButton>
+            <div class="flex justify-center">
+                <JetButton>Create room</JetButton>
+            </div>
         </form>
     </AppLayout>
 </template>

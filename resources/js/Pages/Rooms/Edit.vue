@@ -64,40 +64,46 @@ export default {
                 Create room
             </h2>
         </template>
-        <form @submit.prevent>
-            <div>
-                <JetLabel for="name" value="Room name:" />
-                <JetInput v-model="form.name" type="text" id="name" />
-                <p class="text-red-700" v-if="errors.name">
-                    {{ errors.name }}
-                </p>
-            </div>
-            <JetDialogModal :show="confirmingDeletion" @close="closeModal">
-                <template #title> Delete {{ room.name }} </template>
-
-                <template #content>
-                    Are you sure you want to delete your room:
-                    <strong>{{ room.name }} </strong>?
-                </template>
-
-                <template #footer>
-                    <JetButton @click="closeModal"> Cancel </JetButton>
-
+        <form
+            @submit.prevent
+            class="flex flex-col items-center justify-center gap-4 p-4"
+        >
+            <div class="w-[90vw] max-w-[650px]">
+                <div class="flex flex-col">
+                    <JetLabel for="name" value="Room name:" />
+                    <JetInput v-model="form.name" type="text" id="name" />
+                    <p class="text-red-700" v-if="errors.name">
+                        {{ errors.name }}
+                    </p>
+                </div>
+                <JetDialogModal :show="confirmingDeletion" @close="closeModal">
+                    <template #title> Delete {{ room.name }} </template>
+                    <template #content>
+                        Are you sure you want to delete your room:
+                        <strong>{{ room.name }} </strong>?
+                    </template>
+                    <template #footer>
+                        <JetButton @click="closeModal"> Cancel </JetButton>
+                        <JetButton
+                            class="ml-3"
+                            :class="{ 'opacity-25': form.processing }"
+                            button-style-type="danger-border"
+                            :disabled="form.processing"
+                            @click="deleteRoom"
+                        >
+                            Delete room
+                        </JetButton>
+                    </template>
+                </JetDialogModal>
+                <div class="mt-3 flex justify-center gap-3">
                     <JetButton
-                        class="ml-3"
-                        :class="{ 'opacity-25': form.processing }"
-                        button-style-type="danger"
-                        :disabled="form.processing"
-                        @click="deleteRoom"
+                        button-style-type="danger-border"
+                        @click="confirmDeletion"
+                        >Delete</JetButton
                     >
-                        Delete room
-                    </JetButton>
-                </template>
-            </JetDialogModal>
-            <JetButton @click="updateRoom">Update</JetButton>
-            <JetButton button-style-type="danger" @click="confirmDeletion"
-                >Delete</JetButton
-            >
+                    <JetButton @click="updateRoom">Update</JetButton>
+                </div>
+            </div>
         </form>
     </AppLayout>
 </template>

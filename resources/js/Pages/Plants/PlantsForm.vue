@@ -121,158 +121,176 @@ export default {
                 Edit {{ plant.name }}
             </h2>
         </template>
-        <form @submit.prevent class="flex flex-col gap-4 p-4">
-            <div class="flex flex-col">
-                <JetLabel for="plantName" value="Plant Name:" />
-                <JetInput id="plantName" v-model="form.plantName" type="text" />
-                <p class="text-red-700" v-if="errors.plantName">
-                    {{ errors.plantName }}
-                </p>
-            </div>
-            <div class="flex flex-col">
-                <JetLabel for="description" value="Plant Description:" />
-                <textarea
-                    name="description"
-                    id="description"
-                    cols="30"
-                    rows="10"
-                    v-model="form.description"
-                    class="rounded-md border-gray-300 shadow-sm focus:ring focus:ring-plantDiary-100 focus:ring-opacity-50"
-                ></textarea>
-                <p class="text-red-700" v-if="errors.description">
-                    {{ errors.description }}
-                </p>
-            </div>
-            <div class="flex flex-col">
-                <JetLabel for="days-to-water" value="Days to water" />
-                <JetInput
-                    id="days-to-water"
-                    v-model="form.daysToWater"
-                    type="number"
-                />
-            </div>
-            <div class="flex flex-col">
-                <JetLabel for="water_count" value="How much water:" />
-                <select
-                    class="rounded-md border-gray-300 shadow-sm focus:ring focus:ring-plantDiary-100 focus:ring-opacity-50"
-                    v-model="form.waterCount"
-                    name="water_count"
-                    id="water_count"
-                >
-                    <option value="0" selected>None</option>
-                    <option value="1">Low</option>
-                    <option value="2">Medium</option>
-                    <option value="3">High</option>
-                </select>
-                <p class="text-red-700" v-if="errors.water_count">
-                    {{ errors.water_count }}
-                </p>
-            </div>
-            <div class="flex flex-col">
-                <JetLabel for="sun" value="How much sun" />
-                <select
-                    class="rounded-md border-gray-300 shadow-sm focus:ring focus:ring-plantDiary-100 focus:ring-opacity-50"
-                    v-model="form.sun"
-                    name="sun"
-                    id="sun"
-                >
-                    <option value="0" selected>None</option>
-                    <option value="1">Shadow</option>
-                    <option value="2">Half-shadow</option>
-                    <option value="3">Sun</option>
-                </select>
-                <p class="text-red-700" v-if="errors.sun">{{ errors.sun }}</p>
-            </div>
-            <div class="flex flex-col" v-if="roomsExists">
-                <JetLabel for="room_id" value="Which room" />
-                <select
-                    class="rounded-md border-gray-300 shadow-sm focus:ring focus:ring-plantDiary-100 focus:ring-opacity-50"
-                    v-model="form.roomId"
-                    name="room_id"
-                    id="room_id"
-                >
-                    <option
-                        v-for="room in rooms"
-                        :key="room.id"
-                        :value="room.id"
-                    >
-                        {{ room.name }}
-                    </option>
-                </select>
-            </div>
-            <div class="flex flex-col">
-                <JetLabel for="images"> Add images </JetLabel>
-                <input
-                    type="file"
-                    id="images"
-                    name="images"
-                    @input="form.image = $event.target.files[0]"
-                />
-                <p class="text-red-700" v-if="errors.image">
-                    {{ errors.image }}
-                </p>
-            </div>
-            <div v-if="imagesExists" class="flex gap-3">
-                <div
-                    v-for="image in images"
-                    :key="image.id"
-                    class="flex flex-col items-center"
-                >
-                    <img
-                        :src="loadImage(image.image_path)"
-                        alt=""
-                        class="h-32"
+        <form
+            @submit.prevent
+            class="flex flex-col items-center justify-center gap-4 p-4"
+        >
+            <div class="w-[90vw] max-w-[650px]">
+                <div class="flex flex-col">
+                    <JetLabel for="plantName" value="Plant Name:" />
+                    <JetInput
+                        id="plantName"
+                        v-model="form.plantName"
+                        type="text"
                     />
-                    <p>Picture taken: {{ formatDate(image.created_at) }}</p>
+                    <p class="text-red-700" v-if="errors.plantName">
+                        {{ errors.plantName }}
+                    </p>
+                </div>
+                <div class="flex flex-col">
+                    <JetLabel for="description" value="Plant Description:" />
+                    <textarea
+                        name="description"
+                        id="description"
+                        cols="30"
+                        rows="10"
+                        v-model="form.description"
+                        class="rounded-md border-gray-300 shadow-sm focus:ring focus:ring-plantDiary-100 focus:ring-opacity-50"
+                    ></textarea>
+                    <p class="text-red-700" v-if="errors.description">
+                        {{ errors.description }}
+                    </p>
+                </div>
+                <div class="flex flex-col">
+                    <JetLabel for="days-to-water" value="Days to water" />
+                    <JetInput
+                        id="days-to-water"
+                        v-model="form.daysToWater"
+                        type="number"
+                        min="0"
+                    />
+                </div>
+                <div class="flex flex-col">
+                    <JetLabel for="water_count" value="How much water:" />
+                    <select
+                        class="rounded-md border-gray-300 shadow-sm focus:ring focus:ring-plantDiary-100 focus:ring-opacity-50"
+                        v-model="form.waterCount"
+                        name="water_count"
+                        id="water_count"
+                    >
+                        <option value="0" selected>None</option>
+                        <option value="1">Low</option>
+                        <option value="2">Medium</option>
+                        <option value="3">High</option>
+                    </select>
+                    <p class="text-red-700" v-if="errors.water_count">
+                        {{ errors.water_count }}
+                    </p>
+                </div>
+                <div class="flex flex-col">
+                    <JetLabel for="sun" value="How much sun" />
+                    <select
+                        class="rounded-md border-gray-300 shadow-sm focus:ring focus:ring-plantDiary-100 focus:ring-opacity-50"
+                        v-model="form.sun"
+                        name="sun"
+                        id="sun"
+                    >
+                        <option value="0" selected>None</option>
+                        <option value="1">Shadow</option>
+                        <option value="2">Half-shadow</option>
+                        <option value="3">Sun</option>
+                    </select>
+                    <p class="text-red-700" v-if="errors.sun">
+                        {{ errors.sun }}
+                    </p>
+                </div>
+                <div class="flex flex-col" v-if="roomsExists">
+                    <JetLabel for="room_id" value="Which room" />
+                    <select
+                        class="rounded-md border-gray-300 shadow-sm focus:ring focus:ring-plantDiary-100 focus:ring-opacity-50"
+                        v-model="form.roomId"
+                        name="room_id"
+                        id="room_id"
+                    >
+                        <option
+                            v-for="room in rooms"
+                            :key="room.id"
+                            :value="room.id"
+                        >
+                            {{ room.name }}
+                        </option>
+                    </select>
+                </div>
+                <div class="flex flex-col">
+                    <JetLabel for="images"> Add images </JetLabel>
+                    <input
+                        type="file"
+                        id="images"
+                        name="images"
+                        @input="form.image = $event.target.files[0]"
+                    />
+                    <p class="text-red-700" v-if="errors.image">
+                        {{ errors.image }}
+                    </p>
+                </div>
+                <div v-if="imagesExists" class="mt-3 flex gap-3">
+                    <div
+                        v-for="image in images"
+                        :key="image.id"
+                        class="flex flex-col items-center"
+                    >
+                        <img
+                            :src="loadImage(image.image_path)"
+                            alt=""
+                            class="h-24"
+                        />
+                        <p>{{ formatDate(image.created_at) }}</p>
+                    </div>
+                </div>
+                <progress
+                    v-if="form.progress"
+                    :value="form.progress.percentage"
+                    max="100"
+                >
+                    {{ form.progress.percentage }}%
+                </progress>
+                <JetDialogModal :show="confirmingDeletion" @close="closeModal">
+                    <template #title> Delete {{ plant.name }} </template>
+                    <template #content>
+                        Are you sure you want to delete your plant:
+                        <strong>{{ plant.name }} </strong>?
+                    </template>
+                    <template #footer>
+                        <JetButton @click="closeModal"> Cancel </JetButton>
+                        <JetButton
+                            class="ml-3"
+                            :class="{ 'opacity-25': form.processing }"
+                            button-style-type="danger-border"
+                            :disabled="form.processing"
+                            @click="deletePlant"
+                        >
+                            Delete plant
+                        </JetButton>
+                    </template>
+                </JetDialogModal>
+                <div class="mt-3">
+                    <div class="flex justify-center">
+                        <JetButton
+                            v-if="plant === undefined"
+                            @click="createPlant"
+                        >
+                            Create plant
+                        </JetButton>
+                    </div>
+                    <div class="flex justify-center gap-3">
+                        <JetButton
+                            button-style-type="danger-border"
+                            v-if="plant !== undefined"
+                            type="submit"
+                            @click="confirmDeletion"
+                        >
+                            Delete
+                        </JetButton>
+                        <JetButton
+                            v-if="plant !== undefined"
+                            type="submit"
+                            @click="updatePlant"
+                        >
+                            Save
+                        </JetButton>
+                    </div>
                 </div>
             </div>
-            <progress
-                v-if="form.progress"
-                :value="form.progress.percentage"
-                max="100"
-            >
-                {{ form.progress.percentage }}%
-            </progress>
-            <JetDialogModal :show="confirmingDeletion" @close="closeModal">
-                <template #title> Delete {{ plant.name }} </template>
-
-                <template #content>
-                    Are you sure you want to delete your plant:
-                    <strong>{{ plant.name }} </strong>?
-                </template>
-
-                <template #footer>
-                    <JetButton @click="closeModal"> Cancel </JetButton>
-
-                    <JetButton
-                        class="ml-3"
-                        :class="{ 'opacity-25': form.processing }"
-                        button-style-type="danger"
-                        :disabled="form.processing"
-                        @click="deletePlant"
-                    >
-                        Delete plant
-                    </JetButton>
-                </template>
-            </JetDialogModal>
-            <JetButton v-if="plant === undefined" @click="createPlant">
-                Create
-            </JetButton>
-            <JetButton
-                v-if="plant !== undefined"
-                type="submit"
-                @click="updatePlant"
-            >
-                Save
-            </JetButton>
-            <JetButton
-                button-style-type="danger"
-                v-if="plant !== undefined"
-                type="submit"
-                @click="confirmDeletion"
-            >
-                Delete
-            </JetButton>
         </form>
     </AppLayout>
 </template>
