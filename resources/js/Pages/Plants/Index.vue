@@ -6,7 +6,7 @@
             :daysToWater="calculateRemainingDays(plant.next_water)"
             :waterCount="plant.water_count"
             :sun="plant.sun"
-            :plantImg="getFirstPlantImage(plant.plant_images)"
+            :plantImg="plant.plant_images"
             :defaultDays="plant.days_to_water"
             :plantId="plant.id"
         />

@@ -66,7 +66,6 @@ export default defineComponent({
     mounted() {
         this.openWaterPopUp ? (this.showWaterPopUp = true) : "";
         this.openSunPopUp ? (this.showSunPopUp = true) : "";
-        console.log(this.daysToWater);
     },
     components: { WaterPopUp, SunPopUp },
 });
