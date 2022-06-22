@@ -67,7 +67,12 @@ class RoomsController extends Controller
     public function show($id)
     {
         $room = Room::find($id);
-        $plants = $room->plants;
+        $userId = auth()->user()->id;
+        $plants = User::find($userId)
+            ->plants()
+            ->where('room_id', '=', $room->id)
+            ->with('plantImages')
+            ->get();
         return Inertia::render('Rooms/Show', compact('plants', 'room'));
     }
 
