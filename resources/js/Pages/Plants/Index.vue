@@ -23,6 +23,9 @@ export default {
         plants: {
             type: Object,
         },
+        isCollapsed: {
+            type: Object,
+        },
     },
     components: {
         Link,

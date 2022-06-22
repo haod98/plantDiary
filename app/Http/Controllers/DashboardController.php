@@ -14,10 +14,13 @@ class DashboardController extends Controller
     public function index()
     {
         $userId = auth()->user()->id;
-        $plants = User::find($userId)
+        $user = User::find($userId);
+
+        $plants = $user
             ->plants()
             ->with('plantImages')
             ->get();
-        return Inertia::render('Dashboard', compact('plants'));
+        $isCollapsed = $user->select('collapse_plant')->where('id', $userId)->get();
+        return Inertia::render('Dashboard', compact('plants', 'isCollapsed'));
     }
 }

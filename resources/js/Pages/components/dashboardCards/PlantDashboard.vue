@@ -24,7 +24,7 @@ export default defineComponent({
         defaultDays: Number | null,
         isCollapsed: {
             type: Boolean,
-            default: false,
+            default: true,
         },
         hideDropDown: {
             type: Boolean,
