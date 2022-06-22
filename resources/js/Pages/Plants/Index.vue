@@ -17,7 +17,7 @@
 import { Link } from "@inertiajs/inertia-vue3";
 import PlantDashboard from "../components/dashboardCards/PlantDashboard.vue";
 import JetButton from "../../Jetstream/Button.vue";
-import { differenceInDays } from "date-fns";
+import { calculateRemainingDays } from "../../helpers";
 export default {
     props: {
         plants: {
@@ -33,10 +33,11 @@ export default {
         getFirstPlantImage(image) {
             return image.length > 0 ? image[0].image_path : undefined;
         },
-        calculateRemainingDays(nextTimeToWater) {
-            if (nextTimeToWater === null) return null;
-            return differenceInDays(new Date(nextTimeToWater), new Date()) + 1; // +1 so it also includes todays day.
-        },
+    },
+    data() {
+        return {
+            calculateRemainingDays,
+        };
     },
 };
 </script>
