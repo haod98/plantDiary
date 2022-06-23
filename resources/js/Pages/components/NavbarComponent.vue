@@ -26,6 +26,9 @@ export default defineComponent({
         toggleNav() {
             this.isNavActive = !this.isNavActive;
         },
+        closeNav() {
+            this.isNavActive = false;
+        },
     },
 });
 </script>
@@ -34,13 +37,13 @@ export default defineComponent({
     <!--  Mobile -->
     <nav class="relative lg:hidden">
         <div class="flex items-center">
-            <div class="absolute z-20">
+            <div class="fixed top-2 z-20">
                 <BurgerMenu @click="toggleNav" :isNavActive="isNavActive" />
             </div>
             <div class="mx-auto flex min-w-[80%] justify-center">
                 <Link class="min-w-[80%]" :href="'/'">
                     <img
-                        class="max-w-[600px]"
+                        class="mt-2 max-w-[600px]"
                         :src="logo"
                         alt="Plant diary logo"
                     />
@@ -61,7 +64,8 @@ export default defineComponent({
                 </li>
                 <li v-for="navItem in navItems" :key="navItem.id">
                     <a
-                        :href="navItems.href"
+                        @click="closeNav"
+                        :href="navItem.href"
                         class="text-lg font-light text-white hover:font-normal hover:underline hover:decoration-plantDiary-100"
                         >{{ navItem.item }}</a
                     >
