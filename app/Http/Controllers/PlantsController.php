@@ -4,17 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Plant;
 use App\Models\PlantImage;
-use App\Models\Room;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
-use SebastianBergmann\GlobalState\Restorer;
-use Symfony\Component\VarDumper\VarDumper;
 
 class PlantsController extends Controller
 {
