@@ -41,7 +41,7 @@ export default defineComponent({
                 <BurgerMenu @click="toggleNav" :isNavActive="isNavActive" />
             </div>
             <div class="mx-auto flex min-w-[80%] justify-center">
-                <Link class="min-w-[80%]" :href="'/'">
+                <Link class="min-w-[80%]" :href="route('homepage')">
                     <img
                         class="mt-2 max-w-[600px]"
                         :src="logo"
@@ -85,7 +85,7 @@ export default defineComponent({
     <nav class="hidden lg:mt-4 lg:block">
         <ul class="flex justify-between">
             <li>
-                <Link :href="route('login')">
+                <Link :href="route('homepage')">
                     <img class="w-56" :src="logo" alt="Plant diary logo" />
                 </Link>
             </li>

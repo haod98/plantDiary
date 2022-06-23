@@ -25,7 +25,11 @@ Route::get('/', function () {
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
     ]);
-});
+})->name('homepage');
+
+Route::get('/terms-of-service', function () {
+    return Inertia::render('tos/TermsOfService');
+})->name('tos');
 
 Route::get('/plantImages', [PlantsController::class, 'loadImage']);
 Route::put('/plants/cast-water', [PlantsController::class, 'castWater'])->name('plants.castWater');

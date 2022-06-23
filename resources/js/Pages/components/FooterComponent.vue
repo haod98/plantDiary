@@ -11,7 +11,9 @@ import { Link } from "@inertiajs/inertia-vue3";
             <li>
                 <Link :href="route('register')">Create account</Link>
             </li>
-            <li><a href="#">Terms of Service</a></li>
+            <li>
+                <Link :href="route('tos')"> Terms of Service </Link>
+            </li>
             <li><a href="#">Privacy Policy</a></li>
             <li class="mr-7">
                 <a href="#"
