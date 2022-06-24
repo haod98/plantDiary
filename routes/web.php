@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\LocalShopController;
 use App\Http\Controllers\PlantsController;
 use App\Http\Controllers\RoomsController;
 use Illuminate\Foundation\Application;
@@ -36,6 +37,7 @@ Route::put('/plants/cast-water', [PlantsController::class, 'castWater'])->name('
 Route::put('/plants/snooze-water', [PlantsController::class, 'snoozeWater'])->name('plants.snoozeWater');
 Route::resource('plants', PlantsController::class);
 Route::resource('rooms', RoomsController::class);
+Route::get('/local-shop', [LocalShopController::class, 'index'])->name('shops.index');
 
 Route::middleware([
     'auth:sanctum',

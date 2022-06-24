@@ -74,7 +74,9 @@ const logout = () => {
                         >
                             <li>Add</li>
                         </Link>
-                        <li>Local shops</li>
+                        <Link :href="route('shops.index')">
+                            <li>Local shops</li>
+                        </Link>
                         <Link
                             :href="route('profile.show')"
                             :class="{
