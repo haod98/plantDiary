@@ -47,45 +47,57 @@ const logout = () => {
                 <slot />
                 <nav ref="navbar" class="navbar-bottom fixed bottom-0 w-full">
                     <ul class="flex justify-around bg-black py-6 text-white">
-                        <Link
-                            :href="route('dashboard')"
-                            :class="{
-                                'text-plantDiary-100':
-                                    $page.url.startsWith('/dashboard'),
-                            }"
-                        >
-                            <li>My plants</li>
-                        </Link>
-                        <Link
-                            :href="route('rooms.index')"
-                            :class="{
-                                'text-plantDiary-100':
-                                    $page.url.startsWith('/rooms'),
-                            }"
-                        >
-                            <li>My rooms</li>
-                        </Link>
-                        <Link
-                            :href="route('plants.create')"
-                            :class="{
-                                'text-plantDiary-100':
-                                    $page.url === '/plants/create',
-                            }"
-                        >
-                            <li>Add</li>
-                        </Link>
-                        <Link :href="route('shops.index')">
-                            <li>Local shops</li>
-                        </Link>
-                        <Link
-                            :href="route('profile.show')"
-                            :class="{
-                                'text-plantDiary-100':
-                                    $page.url.startsWith('/user/profile'),
-                            }"
-                        >
-                            <li>Profile</li>
-                        </Link>
+                        <li>
+                            <Link
+                                :href="route('dashboard')"
+                                :class="{
+                                    'text-plantDiary-100':
+                                        $page.url.startsWith('/dashboard'),
+                                }"
+                            >
+                                My plants
+                            </Link>
+                        </li>
+                        <li>
+                            <Link
+                                :href="route('rooms.index')"
+                                :class="{
+                                    'text-plantDiary-100':
+                                        $page.url.startsWith('/rooms'),
+                                }"
+                                >My rooms
+                            </Link>
+                        </li>
+                        <li>
+                            <Link
+                                :href="route('plants.create')"
+                                :class="{
+                                    'text-plantDiary-100':
+                                        $page.url === '/plants/create',
+                                }"
+                                >Add
+                            </Link>
+                        </li>
+                        <li>
+                            <Link
+                                :href="route('shops.index')"
+                                :class="{
+                                    'text-plantDiary-100':
+                                        $page.url.startsWith('/local-shop'),
+                                }"
+                                >Local shops
+                            </Link>
+                        </li>
+                        <li>
+                            <Link
+                                :href="route('profile.show')"
+                                :class="{
+                                    'text-plantDiary-100':
+                                        $page.url.startsWith('/user/profile'),
+                                }"
+                                >Profile
+                            </Link>
+                        </li>
                     </ul>
                 </nav>
             </main>
