@@ -50,7 +50,7 @@ export default defineComponent({
 <template>
     <h3 class="text-xl font-bold">{{ plantName }}</h3>
     <p
-        class="card-description mb-3 transition-[height] duration-500"
+        class="card-description mb-3 overflow-hidden text-ellipsis transition-[height] duration-500"
         :class="isCollapsed ? 'h-0 overflow-hidden' : 'h-[5rem]'"
         data-cy="card-description"
     >

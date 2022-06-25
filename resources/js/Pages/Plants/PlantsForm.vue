@@ -50,6 +50,9 @@ export default {
         function deletePlant() {
             Inertia.delete(route("plants.destroy", props.plant.id), form);
         }
+        function deleteImage(id) {
+            Inertia.delete(route("plantsImage.destroy", id));
+        }
         const roomsExists = props.rooms.length !== 0;
         const imagesExists =
             props.images !== undefined && props.images.length !== 0;
@@ -78,6 +81,7 @@ export default {
             deletePlant,
             confirmDeletion,
             closeModal,
+            deleteImage,
         };
     },
     props: {
@@ -232,8 +236,15 @@ export default {
                         <img
                             :src="loadImage(image.image_path)"
                             alt=""
-                            class="h-24"
+                            class="mb-2 h-24"
                         />
+                        <form @submit.prevent>
+                            <JetButton
+                                @click="deleteImage(image.id)"
+                                button-style-type="danger-border"
+                                >Delete</JetButton
+                            >
+                        </form>
                         <p>{{ formatDate(image.created_at) }}</p>
                     </div>
                 </div>

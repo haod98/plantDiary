@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LocalShopController;
+use App\Http\Controllers\PlantImageController;
 use App\Http\Controllers\PlantsController;
 use App\Http\Controllers\RoomsController;
 use Illuminate\Foundation\Application;
@@ -39,6 +40,7 @@ Route::resource('plants', PlantsController::class);
 Route::resource('rooms', RoomsController::class);
 Route::get('/local-shop', [LocalShopController::class, 'index'])->name('shops.index');
 
+Route::delete('/plants-image/{id}', [PlantImageController::class, 'destroy'])->name('plantsImage.destroy');
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
