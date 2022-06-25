@@ -4,7 +4,7 @@
         <template #header>
             <h2>Local shops</h2>
         </template>
-        <div ref="map"></div>
+        <div ref="map" id="map" style="height: 1000px"></div>
     </AppLayout>
 </template>
 
@@ -15,12 +15,12 @@ import { Head, Link } from "@inertiajs/inertia-vue3";
 
 const map = ref(null);
 onMounted(() => {
-    function initMap() {
-        map = new google.maps.Map(map, {
-            center: { lat: -34.397, lng: 150.644 },
-            zoom: 8,
-        });
-    }
     initMap();
 });
+function initMap() {
+    console.log(map.value);
+    let vienna = new google.maps.LatLng(48.2082, 16.3738);
+    new google.maps.InfoWindow();
+    new google.maps.Map(map.value, { center: vienna, zoom: 15 });
+}
 </script>
