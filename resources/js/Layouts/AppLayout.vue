@@ -3,6 +3,7 @@ import { ref } from "vue";
 import { Inertia } from "@inertiajs/inertia";
 import { Head, Link } from "@inertiajs/inertia-vue3";
 import JetBanner from "@/Jetstream/Banner.vue";
+import logo from "../../assets/logo.svg";
 
 defineProps({
     title: String,
@@ -37,8 +38,11 @@ const logout = () => {
         <div class="min-h-screen bg-gray-100">
             <!-- Page Heading -->
             <header v-if="$slots.header" class="bg-white shadow">
-                <div class="mx-auto max-w-7xl py-6 px-4 sm:px-6 lg:px-8">
+                <div class="mx-auto flex max-w-7xl py-6 px-4 sm:px-6 lg:px-8">
                     <slot name="header" />
+                    <div class="ml-auto">
+                        <img :src="logo" class="h-7" alt="" />
+                    </div>
                 </div>
             </header>
 
