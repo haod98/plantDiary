@@ -18,6 +18,16 @@ import HomepageLayout from "../../Layouts/HomepageLayout.vue";
                     >The source code</a
                 >
             </div>
+            <h2 class="text-xl font-bold uppercase">Legal Disclosure</h2>
+            <p>
+                Information in accordance with §5 of the E-Commerce Act, §14 of
+                the Unternehmensgesetzbuch, §63 of the Commercial Code and
+                disclosure requirements under §25 of the Media Act.
+            </p>
+            <p>Hao Dong</p>
+            <a>Phone: +43 664 505 89 29 </a>
+            <br />
+            <a> Email: h.dong1998@hotmail.com</a>
             <h1 class="text-xl font-bold uppercase">
                 Terms and Conditions for PlantDiary
             </h1>
