@@ -12,6 +12,5 @@ class PlantImageController extends Controller
         $image = PlantImage::findOrFail($id);
         $image->delete();
         return redirect('/dashboard');
-        // dd($request, $id);
     }
 }
