@@ -117,7 +117,7 @@ export default defineComponent({
                 :hideDropDown="true"
             ></PlantCardComponent>
         </div>
-        <div class="lg:col-start-11 lg:col-end-13 lg:mr-10 xl:col-start-10">
+        <div class="lg:col-start-11 lg:col-end-13 xl:col-start-10">
             <p class="mb-2 text-center text-2xl">Week 6</p>
             <PlantCardComponent
                 plantImg="5"
