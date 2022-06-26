@@ -53,27 +53,49 @@ export default defineComponent({
             <ul>
                 <li>
                     <Link
-                        class="text-lg font-light text-white hover:font-normal hover:underline hover:decoration-plantDiary-100"
+                        class="text-lg font-light text-white hover:underline hover:decoration-plantDiary-100"
                         :href="'/'"
                         >Home
                     </Link>
                 </li>
-                <li v-for="navItem in navItems" :key="navItem.id">
-                    <a
-                        @click="closeNav"
-                        :href="navItem.href"
-                        class="text-lg font-light text-white hover:font-normal hover:underline hover:decoration-plantDiary-100"
-                        >{{ navItem.item }}</a
+
+                <li>
+                    <Link
+                        :href="route('register')"
+                        class="text-lg font-light text-white hover:underline hover:decoration-plantDiary-100"
+                        >Create account</Link
                     >
                 </li>
+                <li>
+                    <Link
+                        :href="route('tos')"
+                        class="text-lg font-light text-white hover:underline hover:decoration-plantDiary-100"
+                    >
+                        Terms of Service
+                    </Link>
+                </li>
+                <li>
+                    <Link
+                        :href="route('privacy')"
+                        class="text-lg font-light text-white hover:underline hover:decoration-plantDiary-100"
+                    >
+                        Privacy Policy
+                    </Link>
+                </li>
             </ul>
-            <div class="flex flex-col items-start justify-start gap-3">
+            <div class="flex flex-col items-start justify-start">
                 <Link
                     :href="route('register')"
                     class="font-bold text-plantDiary-50"
                 >
                     Sign Up
                 </Link>
+
+                <Link
+                    :href="route('register')"
+                    class="font-bold text-plantDiary-50"
+                    >Create account</Link
+                >
             </div>
         </div>
     </nav>
@@ -84,13 +106,6 @@ export default defineComponent({
                 <Link :href="route('homepage')">
                     <img class="w-56" :src="logo" alt="Plant diary logo" />
                 </Link>
-            </li>
-            <li v-for="navItem in navItems" :key="navItem.id">
-                <a
-                    :href="navItem.href"
-                    class="text-lg font-light hover:font-normal hover:underline hover:decoration-plantDiary-100"
-                    >{{ navItem.item }}</a
-                >
             </li>
             <li class="flex gap-2">
                 <Link :href="route('register')">
