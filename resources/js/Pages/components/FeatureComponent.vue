@@ -58,18 +58,21 @@ export default defineComponent({
             data-cy="first-feature"
         >
             <PlantCardComponent
+                description="Monstera is a genus of 49 species of flowering plants in the arum family, Araceae, native to tropical regions of the Americas."
                 :hide-drop-down="true"
                 plant-img="1"
             ></PlantCardComponent>
             <PlantCardComponent
                 plantImg="2"
                 altImg="An image of a ficus plant in a white pot"
+                description="Ficus is a genus of about 850 species of woody trees, shrubs, vines, epiphytes and hemiepiphytes in the family Moraceae"
                 class="absolute top-0 left-2/4 -z-10 scale-90 opacity-40"
                 :hide-drop-down="true"
             ></PlantCardComponent>
             <PlantCardComponent
                 plantImg="3"
                 altImg="An image of a ficus plant in a white pot"
+                description="Ficus is a genus of about 850 species of woody trees, shrubs, vines, epiphytes and hemiepiphytes in the family Moraceae"
                 class="absolute top-0 right-2/4 -z-10 scale-90 opacity-40"
                 :hideDropDown="true"
             ></PlantCardComponent>
@@ -113,6 +116,7 @@ export default defineComponent({
             <PlantCardComponent
                 plantImg="4"
                 title="Snake plant"
+                description="Dracaena trifasciata is a species of flowering plant in the family Asparagaceae, native to tropical West Africa from Nigeria east to the Congo. It is most commonly known as the snake plant"
                 altImg="A young snake plant in a white pot"
                 :hideDropDown="true"
             ></PlantCardComponent>
@@ -122,6 +126,7 @@ export default defineComponent({
             <PlantCardComponent
                 plantImg="5"
                 title="Snake plant"
+                description="Dracaena trifasciata is a species of flowering plant in the family Asparagaceae, native to tropical West Africa from Nigeria east to the Congo. It is most commonly known as the snake plant"
                 altImg="A big snake plant on the floor in a black pot"
                 :hideDropDown="true"
             ></PlantCardComponent>
