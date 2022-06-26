@@ -14,10 +14,6 @@ export default defineComponent({
     },
     data() {
         return {
-            navItems: [
-                { id: 0, item: "Features", href: "#simple" },
-                { id: 1, item: "About us", href: "#" },
-            ],
             isNavActive: false,
             logo,
         };
