@@ -42,14 +42,6 @@ defineProps({
                     :sessions="sessions"
                     class="mt-10 sm:mt-0"
                 />
-
-                <template
-                    v-if="$page.props.jetstream.hasAccountDeletionFeatures"
-                >
-                    <JetSectionBorder />
-
-                    <DeleteUserForm class="mt-10 sm:mt-0" />
-                </template>
             </div>
         </div>
     </AppLayout>
