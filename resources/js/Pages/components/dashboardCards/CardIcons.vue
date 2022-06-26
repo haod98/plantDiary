@@ -77,7 +77,7 @@ export default defineComponent({
         class="fixed left-0 top-0 z-10 h-full w-full"
     ></div>
     <div class="relative mt-3 flex items-center justify-between">
-        <button class="flex cursor-pointer gap-1" @click="toggleWaterPopUp">
+        <button class="flex gap-1">
             <svg
                 v-for="singleDrop in MAX_WATER_DROPS"
                 :key="singleDrop"
@@ -106,10 +106,9 @@ export default defineComponent({
             @closePopUp="closePopUp"
         />
         <img
-            @click="toggleSunPopUp"
             :src="getSunLevelIcon(sunLevel)"
             alt="A sun icon"
-            class="absolute left-2/4 h-8 -translate-x-2/4 cursor-pointer"
+            class="absolute left-2/4 h-8 -translate-x-2/4"
         />
         <div v-if="daysToWater !== null" class="w-24">
             <div class="relative">
