@@ -116,7 +116,7 @@ export default defineComponent({
             <PlantCardComponent
                 plantImg="4"
                 title="Snake plant"
-                description="Dracaena trifasciata is a species of flowering plant in the family Asparagaceae, native to tropical West Africa from Nigeria east to the Congo. It is most commonly known as the snake plant"
+                description="Dracaena trifasciata is a species of flowering plant in the family Asparagaceae, native to tropical West Africa from Nigeria east to the Congo."
                 altImg="A young snake plant in a white pot"
                 :hideDropDown="true"
             ></PlantCardComponent>
@@ -126,7 +126,7 @@ export default defineComponent({
             <PlantCardComponent
                 plantImg="5"
                 title="Snake plant"
-                description="Dracaena trifasciata is a species of flowering plant in the family Asparagaceae, native to tropical West Africa from Nigeria east to the Congo. It is most commonly known as the snake plant"
+                description="Dracaena trifasciata is a species of flowering plant in the family Asparagaceae, native to tropical West Africa from Nigeria east to the Congo."
                 altImg="A big snake plant on the floor in a black pot"
                 :hideDropDown="true"
             ></PlantCardComponent>
