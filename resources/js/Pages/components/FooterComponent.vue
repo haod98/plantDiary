@@ -14,11 +14,13 @@ import { Link } from "@inertiajs/inertia-vue3";
             <li>
                 <Link :href="route('tos')"> Terms of Service </Link>
             </li>
-            <li><a href="#">Privacy Policy</a></li>
+            <li>
+                <Link :href="route('privacy')"> Privacy Policy </Link>
+            </li>
             <li class="mr-7">
-                <a href="#"
-                    ><img :src="logo" alt="Plant Diary Logo" class="w-52"
-                /></a>
+                <Link href="/">
+                    <img :src="logo" alt="Plant Diary Logo" class="w-52" />
+                </Link>
             </li>
         </ul>
     </div>

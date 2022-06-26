@@ -33,6 +33,10 @@ Route::get('/terms-of-service', function () {
     return Inertia::render('tos/TermsOfService');
 })->name('tos');
 
+Route::get('/privacy-policy', function () {
+    return Inertia::render('tos/PrivacyPolicy');
+})->name('privacy');
+
 Route::get('/plantImages', [PlantsController::class, 'loadImage']);
 Route::put('/plants/cast-water', [PlantsController::class, 'castWater'])->name('plants.castWater');
 Route::put('/plants/snooze-water', [PlantsController::class, 'snoozeWater'])->name('plants.snoozeWater');
