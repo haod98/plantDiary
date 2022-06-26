@@ -17,29 +17,22 @@ export default defineComponent({
                 {
                     supHeading: "Simple",
                     heading: "All your plants in one place",
-                    description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do 
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
-          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure 
-          dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-          non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`,
+                    description: `Loosing the overview by having too much plants?
+                     PlantDiary will help you out with that. Having all your plants in one single place is easier than ever.
+                     With PlantDiary you can create a card with all the important information about your houseplants
+                     `,
                 },
                 {
                     supHeading: "Track",
                     heading: "Keep track of everything",
-                    description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do 
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
-          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure 
-          dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-          non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`,
+                    description: `Keeping track of all your plants is easier than ever! "How much water does this plant need?", "Does this plant need sun?",
+                    "When do I have to water it again?", "What are the important notes again for this houseplant?" You will never forget these kind of questions with PlantDiary`,
                 },
                 {
                     supHeading: "Growth",
                     heading: "See how your plants grow",
-                    description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do 
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
-          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure 
-          dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-          non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`,
+                    description: `Ever wondered how much you plants have grown over the time? With PlantDiary you do not have to wonder anymore. You can easily upload images of your houseplants
+                    and see how it has developed. `,
                 },
             ],
         };
