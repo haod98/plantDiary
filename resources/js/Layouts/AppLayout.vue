@@ -41,7 +41,9 @@ const logout = () => {
                 <div class="mx-auto flex max-w-7xl py-6 px-4 sm:px-6 lg:px-8">
                     <slot name="header" />
                     <div class="ml-auto">
-                        <img :src="logo" class="h-7" alt="" />
+                        <Link :href="route('dashboard')">
+                            <img :src="logo" class="h-7" alt="" />
+                        </Link>
                     </div>
                 </div>
             </header>
